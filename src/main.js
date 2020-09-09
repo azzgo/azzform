@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import FormEditPage from "./pages/form-edit/index.vue";
-import Home from "./pages/HomePage.vue";
+import Home from "./pages/home/index.vue";
 import App from "./App.vue";
 
 Vue.config.productionTip = false;
