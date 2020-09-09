@@ -34,6 +34,8 @@ export default {
 .header {
   padding: 15px 10px;
   box-shadow: #ccc 0 0 10px;
+  position: relative;
+  z-index: 10;
 }
 
 .nav-back {
