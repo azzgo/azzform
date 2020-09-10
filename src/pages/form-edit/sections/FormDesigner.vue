@@ -3,13 +3,16 @@
     <a-col flex="300px" class="sider">
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
-    <a-col flex="auto" class="content"></a-col>
+    <a-col flex="auto" class="content">
+      <preview-area></preview-area>
+    </a-col>
     <a-col flex="300px" class="sider">编辑栏</a-col>
   </a-row>
 </template>
 
 <script>
 import Toolbar from "../components/ToolBar.vue";
+import PreviewArea from '../components/PreviewArea.vue'
 import { Row, Col } from "ant-design-vue";
 
 const basicComps = [
@@ -58,7 +61,7 @@ export default {
       advancedComps,
     };
   },
-  components: { Toolbar, ARow: Row, ACol: Col },
+  components: { Toolbar, PreviewArea, ARow: Row, ACol: Col },
 };
 </script>
 

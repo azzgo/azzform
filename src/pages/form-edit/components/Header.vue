@@ -5,12 +5,7 @@
         <icon type="left" />返回
       </a-col>
       <a-col class="center-menu" flex="auto">
-        <a-space>
-          <div class="item active">表单设计</div>
-          <div class="item">权限配置</div>
-          <div class="item">参数配置</div>
-          <div class="item">表单发布</div>
-        </a-space>
+        <div class="item">表单设计</div>
       </a-col>
       <a-col class="action-button">
         <a-space>
@@ -52,11 +47,6 @@ export default {
     border-radius: 25px;
     color: black;
     cursor: pointer;
-
-    &.active {
-      background-color: #86888a;
-      color: white;
-    }
   }
 }
 </style>
