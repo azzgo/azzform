@@ -1,10 +1,21 @@
 <template>
+<draggable @change="handleEnd" group="viewcomps">
   <div class="prewview">FormPreview</div>
+</draggable>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
+
+
 export default {
-  name: 'PreviewArea'
+  name: 'PreviewArea',
+  components: {draggable},
+  methods: {
+    handleEnd(event) {
+      console.log(event)
+    }
+  }
 }
 </script>
 

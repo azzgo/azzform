@@ -3,7 +3,7 @@
     <a-card title="基础组件" :bordered="false">
       <a-row :gutter="[10, 15]">
         <a-col :span="12" v-for="comp in basicComps" :key="comp.name">
-          <draggable>
+          <draggable :clone="() => comp" :group="{ name: 'viewcomps', pull: 'clone', put: false}">
             <span class="item">{{comp.name}}</span>
           </draggable>
         </a-col>
@@ -12,7 +12,7 @@
     <a-card title="高级组件" :bordered="false">
       <a-row :gutter="[10, 15]">
         <a-col :span="12" v-for="comp in advanceComps" :key="comp.name">
-          <draggable>
+          <draggable :clone="() => comp" :group="{ name: 'viewcomps', pull: 'clone', put: false}">
             <span class="item">{{comp.name}}</span>
           </draggable>
         </a-col>
