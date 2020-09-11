@@ -2,11 +2,16 @@
   <div class="container">
     <a-card v-for="tool in tools" :key="tool.name" :title="tool.name" :bordered="false">
       <a-row :gutter="[10, 15]">
-        <a-col :span="12" v-for="comp in tool.comps" :key="comp.name">
-          <draggable :clone="() => comp" :group="{ name: 'viewcomps', pull: 'clone', put: false}">
+        <draggable
+          :list="tool.comps"
+          :clone="cloneComp"
+          :group="{ name: 'viewcomps', pull: 'clone', put: false}"
+          :sort="false"
+        >
+          <a-col :span="12" v-for="comp in tool.comps" :key="comp.name">
             <span class="item">{{comp.name}}</span>
-          </draggable>
-        </a-col>
+          </a-col>
+        </draggable>
       </a-row>
     </a-card>
   </div>
@@ -15,6 +20,8 @@
 <script>
 import { Card, Row, Col } from "ant-design-vue";
 import draggable from "vuedraggable";
+
+let globalCount = 0;
 
 export default {
   props: {
@@ -33,6 +40,17 @@ export default {
           comps: this.advanceComps,
         },
       ];
+    },
+  },
+  methods: {
+    cloneComp(item) {
+      return {
+        name: item.name,
+        id: globalCount++,
+      };
+    },
+    log($event) {
+      console.log($event);
     },
   },
   components: {
