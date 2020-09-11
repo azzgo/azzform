@@ -1,6 +1,5 @@
 <template>
-<draggable @change="handleEnd" group="viewcomps">
-  <div class="prewview">FormPreview</div>
+<draggable class="prewview" @ended="handleEnd" group="viewcomps">
 </draggable>
 </template>
 

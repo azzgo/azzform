@@ -1,17 +1,8 @@
 <template>
   <div class="container">
-    <a-card title="基础组件" :bordered="false">
+    <a-card v-for="tool in tools" :key="tool.name" :title="tool.name" :bordered="false">
       <a-row :gutter="[10, 15]">
-        <a-col :span="12" v-for="comp in basicComps" :key="comp.name">
-          <draggable :clone="() => comp" :group="{ name: 'viewcomps', pull: 'clone', put: false}">
-            <span class="item">{{comp.name}}</span>
-          </draggable>
-        </a-col>
-      </a-row>
-    </a-card>
-    <a-card title="高级组件" :bordered="false">
-      <a-row :gutter="[10, 15]">
-        <a-col :span="12" v-for="comp in advanceComps" :key="comp.name">
+        <a-col :span="12" v-for="comp in tool.comps" :key="comp.name">
           <draggable :clone="() => comp" :group="{ name: 'viewcomps', pull: 'clone', put: false}">
             <span class="item">{{comp.name}}</span>
           </draggable>
@@ -29,6 +20,20 @@ export default {
   props: {
     basicComps: Array,
     advanceComps: Array,
+  },
+  computed: {
+    tools() {
+      return [
+        {
+          name: "基础组件",
+          comps: this.basicComps,
+        },
+        {
+          name: "高级组件",
+          comps: this.advanceComps,
+        },
+      ];
+    },
   },
   components: {
     ACard: Card,
