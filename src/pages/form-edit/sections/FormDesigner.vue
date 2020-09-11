@@ -6,13 +6,16 @@
     <a-col flex="auto" class="content">
       <preview-area></preview-area>
     </a-col>
-    <a-col flex="300px" class="sider">编辑栏</a-col>
+    <a-col flex="300px" class="sider">
+      <editor-panel></editor-panel>
+    </a-col>
   </a-row>
 </template>
 
 <script>
 import Toolbar from "../components/ToolBar.vue";
-import PreviewArea from '../components/PreviewArea.vue'
+import PreviewArea from "../components/PreviewArea.vue";
+import EditorPanel from "../components/EditorPanel.vue";
 import { Row, Col } from "ant-design-vue";
 
 const basicComps = [
@@ -61,7 +64,7 @@ export default {
       advancedComps,
     };
   },
-  components: { Toolbar, PreviewArea, ARow: Row, ACol: Col },
+  components: { Toolbar, PreviewArea, EditorPanel, ARow: Row, ACol: Col },
 };
 </script>
 
@@ -76,6 +79,6 @@ export default {
 }
 
 .content {
-  background: #EAECEE;
+  background: #eaecee;
 }
 </style>

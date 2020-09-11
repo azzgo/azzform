@@ -1,5 +1,5 @@
 <template>
-  <draggable :list="forms" class="prewview" @add="onAdd" group="viewcomps">
+  <draggable :list="forms" class="prewview" group="viewcomps">
     <div class="form-item" v-for="formItem in forms" :key="formItem.id">{{formItem.name}}</div>
   </draggable>
 </template>
@@ -13,12 +13,6 @@ export default {
     return {
       forms: [],
     };
-  },
-  methods: {
-    onAdd(evt) {
-      console.log(evt);
-      return evt;
-    },
   },
   components: { draggable },
 };
