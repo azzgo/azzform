@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="tool-container">
     <a-card v-for="tool in tools" :key="tool.name" :title="tool.name" :bordered="false">
       <a-row :gutter="[10, 15]">
         <draggable
@@ -73,7 +73,10 @@ export default {
   background-color: white;
 }
 
-.container {
+.tool-container {
+  height: 100%;
+  height: calc(100vh - 62px);
+  max-height: calc(100vh - 62px);
   border-right: 1px #ccc solid;
   position: relative;
 }

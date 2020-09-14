@@ -5,7 +5,7 @@
         <span>form</span>
       </tab-pane>
       <tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
-        <span>form2</span>
+        <span></span>
       </tab-pane>
     </tabs>
   </div>
@@ -34,6 +34,8 @@ export default {
 <style lang="less" scoped>
 .editor-panel {
   height: 100%;
+  height: calc(100vh - 62px);
+  max-height: calc(100vh - 62px);
   border-left: 1px solid #ccc;
 }
 </style>

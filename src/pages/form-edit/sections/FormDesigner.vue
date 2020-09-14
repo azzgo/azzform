@@ -72,6 +72,7 @@ export default {
 .container {
   height: 100%;
   height: calc(100vh - 62px);
+  max-height: calc(100vh - 62px);
 }
 
 .sider {

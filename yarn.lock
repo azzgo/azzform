@@ -900,6 +900,31 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@form-create/ant-design-vue@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.npm.taobao.org/@form-create/ant-design-vue/download/@form-create/ant-design-vue-1.0.19.tgz#21b1d0ce8275034dd6d9dc392f24f12eac4fc5dc"
+  integrity sha1-IbHQzoJ1A03W2dw5LyTxLqxPxdw=
+  dependencies:
+    "@form-create/core" "^1.0.19"
+    "@form-create/utils" "^1.0.15"
+    ant-design-vue "^1.5.3"
+    moment "^2.24.0"
+
+"@form-create/core@^1.0.19":
+  version "1.0.19"
+  resolved "https://registry.npm.taobao.org/@form-create/core/download/@form-create/core-1.0.19.tgz#d570d2fb1d3cc043230dce245da8b4f7580f8870"
+  integrity sha1-1XDS+x08wEMjDc4kXai091gPiHA=
+  dependencies:
+    "@form-create/utils" "^1.0.15"
+    vue "^2.6.10"
+
+"@form-create/utils@^1.0.15":
+  version "1.0.15"
+  resolved "https://registry.npm.taobao.org/@form-create/utils/download/@form-create/utils-1.0.15.tgz#4f1289ebcfe40c4aad92b27fb22219a0a797b086"
+  integrity sha1-TxKJ68/kDEqtkrJ/siIZoKeXsIY=
+  dependencies:
+    vue "^2.5.2"
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.npm.taobao.org/@hapi/address/download/@hapi/address-2.1.4.tgz?cache=0&sync_timestamp=1593993805495&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40hapi%2Faddress%2Fdownload%2F%40hapi%2Faddress-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -1681,7 +1706,7 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
     "@types/color-name" "^1.1.1"
     color-convert "^2.0.1"
 
-ant-design-vue@^1.6.5:
+ant-design-vue@^1.5.3, ant-design-vue@^1.6.5:
   version "1.6.5"
   resolved "https://registry.npm.taobao.org/ant-design-vue/download/ant-design-vue-1.6.5.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fant-design-vue%2Fdownload%2Fant-design-vue-1.6.5.tgz#82f69846d921c220d04bb9ef9a6c40605e146e6c"
   integrity sha1-gvaYRtkhwiDQS7nvmmxAYF4Ubmw=
@@ -5667,6 +5692,11 @@ moment@^2.21.0:
   resolved "https://registry.npm.taobao.org/moment/download/moment-2.27.0.tgz?cache=0&sync_timestamp=1592516084857&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fmoment%2Fdownload%2Fmoment-2.27.0.tgz#8bff4e3e26a236220dfe3e36de756b6ebaa0105d"
   integrity sha1-i/9OPiaiNiIN/j423nVrbrqgEF0=
 
+moment@^2.24.0:
+  version "2.28.0"
+  resolved "https://registry.npm.taobao.org/moment/download/moment-2.28.0.tgz#cdfe73ce01327cee6537b0fafac2e0f21a237d75"
+  integrity sha1-zf5zzgEyfO5lN7D6+sLg8hojfXU=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8429,7 +8459,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.11:
+vue@^2.5.2, vue@^2.6.10, vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.12.tgz?cache=0&sync_timestamp=1599065113387&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha1-9evU+mvShpQD4pqJau1JBEVskSM=

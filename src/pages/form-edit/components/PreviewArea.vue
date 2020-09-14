@@ -21,6 +21,8 @@ export default {
 <style lang="less" scoped>
 .prewview {
   height: 100%;
+  height: calc(100vh - 62px);
+  max-height: calc(100vh - 62px);
   background-color: white;
   overflow-y: auto;
 }
@@ -36,7 +38,7 @@ export default {
   .sortable-ghost {
     border: 1px red dashed !important;
     width: 100%;
-    height: 40px;
+    min-height: 40px;
 
     .item {
       display: none;
