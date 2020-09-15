@@ -1,12 +1,12 @@
 <script>
 import draggable from "vuedraggable";
 
-import Datetime from "../../../components/Datetime.vue";
-import Description from "../../../components/Description.vue";
-import Input from "../../../components/Input.vue";
-import FNumber from "../../../components/Number.vue";
-import Radio from "../../../components/Radio.vue";
-import Textarea from "../../../components/Textarea.vue";
+import Datetime from "../../../generable-components/Datetime.vue";
+import Description from "../../../generable-components/Description.vue";
+import Input from "../../../generable-components/Input.vue";
+import FNumber from "../../../generable-components/Number.vue";
+import Radio from "../../../generable-components/Radio.vue";
+import Textarea from "../../../generable-components/Textarea.vue";
 
 export default {
   props: {
