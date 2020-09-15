@@ -16,7 +16,7 @@
 import Toolbar from "../components/ToolBar.vue";
 import PreviewArea from "../components/PreviewArea.vue";
 import EditorPanel from "../components/EditorPanel.vue";
-import { basicComps, advancedComps } from "../../../constants/comps";
+import { basicComps, advancedComps } from "../constants/comps";
 
 export default {
   data() {
