@@ -2,18 +2,22 @@
   <div class="editor-panel">
     <a-tabs :animated="false">
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
-        <div v-if="activedField">
-          <a-form-item label="标题">
-            <a-input v-model="activedField.rule.title" />
-          </a-form-item>
-          <a-form-item label="提示" v-if="activedField.rule.placeholder != null">
-            <a-textarea v-model="activedField.rule.placeholder" />
-          </a-form-item>
+        <div class="tab-panel">
+          <div v-if="activedField">
+            <a-form-item label="标题">
+              <a-input v-model="activedField.rule.title" />
+            </a-form-item>
+            <a-form-item label="提示" v-if="activedField.rule.placeholder != null">
+              <a-textarea v-model="activedField.rule.placeholder" />
+            </a-form-item>
+          </div>
+          <div v-else>请选择一个表单元素</div>
         </div>
-        <div v-else>请选择一个表单元素</div>
       </a-tab-pane>
       <a-tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
-        <span></span>
+        <div class="tab-panel">
+          <span></span>
+        </div>
       </a-tab-pane>
     </a-tabs>
   </div>
@@ -26,7 +30,7 @@ const TAB_KEYS = {
 
 export default {
   props: {
-    activedField: null,
+    activedField: null
   },
   data() {
     return {
@@ -43,5 +47,9 @@ export default {
   height: calc(100vh - 62px);
   max-height: calc(100vh - 62px);
   border-left: 1px solid #ccc;
+}
+
+.tab-panel {
+  padding: 10px 15px;
 }
 </style>
