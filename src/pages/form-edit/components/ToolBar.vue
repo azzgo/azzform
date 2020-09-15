@@ -25,36 +25,40 @@ let globalCount = 0;
 export default {
   props: {
     basicComps: Array,
-    advanceComps: Array,
+    advanceComps: Array
   },
   computed: {
     tools() {
       return [
         {
           name: "基础组件",
-          comps: this.basicComps,
+          comps: this.basicComps
         },
         {
           name: "高级组件",
-          comps: this.advanceComps,
-        },
+          comps: this.advanceComps
+        }
       ];
-    },
+    }
   },
   methods: {
     cloneComp(item) {
       return {
         name: item.name,
         id: globalCount++,
+        defaultRule: {
+          ...item.defaultRule,
+          field: item.defaultRule.field + globalCount,
+        }
       };
     },
     log($event) {
       console.log($event);
-    },
+    }
   },
   components: {
-    draggable,
-  },
+    draggable
+  }
 };
 </script>
 

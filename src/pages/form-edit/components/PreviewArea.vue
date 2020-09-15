@@ -1,29 +1,48 @@
 <template>
   <draggable :list="forms" class="prewview" group="viewcomps">
-    <form-create v-model="fApi" :rule="formRules" :option="formOptions"></form-create>
+    <draggable-form-item
+      v-for="form in draggableForms"
+      :rule="form.rule"
+      :key="form.id"
+      :actived="activeFieldId === form.id"
+      @click="setActiveId(form.id)"
+    ></draggable-form-item>
   </draggable>
 </template>
 
 <script>
 import draggable from "vuedraggable";
+import DraggableFormItem from "./DraggableFormItem.vue";
 
 export default {
   name: "PreviewArea",
   data() {
     return {
-      fApi: {},
-      formRules: [
-        {
-          type: "input",
-          field: "goods_name",
-          title: "商品名称"
-        }
-      ],
-      formOptions: { submitBtn: false, resetBtn: false },
-      forms: []
+      forms: [],
+      activeFieldId: ""
     };
   },
-  components: { draggable }
+  computed: {
+    draggableForms() {
+      return this.forms.map(form => {
+        return {
+          id: form.id,
+          rule: {
+            ...form.defaultRule
+          }
+        };
+      });
+    }
+  },
+  methods: {
+    setActiveId(fieldID) {
+      this.activeFieldId = fieldID;
+    }
+  },
+  components: {
+    draggable,
+    DraggableFormItem
+  }
 };
 </script>
 
