@@ -49,6 +49,9 @@ export default {
         rule: {
           ...item.defaultRule,
           field: item.defaultRule.field + globalCount,
+          props: {
+            ...item.defaultRule.props
+          }
         }
       };
     },
