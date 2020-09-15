@@ -1,10 +1,9 @@
 <template>
-  <div>Input</div>
+  <a-input disabled />
 </template>
-
-
 <script>
+import config from "../contants/config";
 export default {
-  name: "f-input"
+  name: `${config.editComponentPrefix}input`
 };
 </script>

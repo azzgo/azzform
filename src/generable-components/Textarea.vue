@@ -3,7 +3,9 @@
 </template>
 
 <script>
+import config from "../contants/config";
+
 export default {
-  name: "f-textarea"
+  name: `${config.editComponentPrefix}textarea`
 };
 </script>

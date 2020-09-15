@@ -1,4 +1,5 @@
 <script>
+import config from "../../../contants/config";
 import draggable from "vuedraggable";
 
 import Datetime from "../../../generable-components/Datetime.vue";
@@ -37,8 +38,8 @@ export default {
         }
       },
       [
-        h(this.rule.type, {
-          props: { disabled: true, placeholder: this.rule.placeholder }
+        h(`${config.editComponentPrefix}${this.rule.type}`, {
+          props: { placeholder: this.rule.placeholder }
         })
       ]
     );

@@ -3,7 +3,8 @@
 </template>
 
 <script>
+import config from '../contants/config'
 export default {
-  name: "f-datetime"
+  name: `${config.editComponentPrefix}datetime`
 };
 </script>
