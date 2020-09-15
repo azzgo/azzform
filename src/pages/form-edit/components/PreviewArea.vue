@@ -1,5 +1,5 @@
 <template>
-  <draggable :list="forms" class="prewview" group="viewcomps">
+  <draggable :list="draggableFields" class="prewview" group="viewcomps">
     <draggable-form-item
       v-for="field in draggableFields"
       :rule="field.rule"
@@ -18,21 +18,9 @@ export default {
   name: "PreviewArea",
   data() {
     return {
-      forms: [],
+      draggableFields: [],
       activeFieldId: ""
     };
-  },
-  computed: {
-    draggableFields() {
-      return this.forms.map(field => {
-        return {
-          id: field.id,
-          rule: {
-            ...field.defaultRule,
-          }
-        };
-      });
-    }
   },
   methods: {
     setActiveId(fieldID) {

@@ -46,7 +46,7 @@ export default {
       return {
         name: item.name,
         id: globalCount++,
-        defaultRule: {
+        rule: {
           ...item.defaultRule,
           field: item.defaultRule.field + globalCount,
         }
