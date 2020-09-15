@@ -31,12 +31,16 @@ export default {
       "a-form-item",
       {
         props: { label: this.rule.title },
-        class: { active: this.actived },
+        class: { active: this.actived, "form-item": true },
         nativeOn: {
           click: handleClick
         }
       },
-      [h(this.rule.type, { props: { disabled: true } })]
+      [
+        h(this.rule.type, {
+          props: { disabled: true, placeholder: this.rule.placeholder }
+        })
+      ]
     );
   },
   methods: {
@@ -52,5 +56,9 @@ export default {
   border: 1px #ccc dashed !important;
   width: 100%;
   min-height: 40px;
+}
+
+.form-item {
+  margin-bottom: 0;
 }
 </style>

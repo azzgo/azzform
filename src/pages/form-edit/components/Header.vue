@@ -20,6 +20,7 @@
 <script>
 
 export default {
+  name: 'preview-header-section',
 };
 </script>
 

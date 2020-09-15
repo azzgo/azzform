@@ -2,7 +2,15 @@
   <div class="editor-panel">
     <a-tabs :animated="false">
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
-        <span>form</span>
+        <div v-if="activedField">
+          <a-form-item label="标题">
+            <a-input v-model="activedField.rule.title" />
+          </a-form-item>
+          <a-form-item label="提示" v-if="activedField.rule.placeholder != null">
+            <a-textarea v-model="activedField.rule.placeholder" />
+          </a-form-item>
+        </div>
+        <div v-else>请选择一个表单元素</div>
       </a-tab-pane>
       <a-tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
         <span></span>
@@ -17,6 +25,9 @@ const TAB_KEYS = {
 };
 
 export default {
+  props: {
+    activedField: null,
+  },
   data() {
     return {
       tabKeys: TAB_KEYS

@@ -1,11 +1,11 @@
 <template>
   <draggable :list="forms" class="prewview" group="viewcomps">
     <draggable-form-item
-      v-for="form in draggableForms"
-      :rule="form.rule"
-      :key="form.id"
-      :actived="activeFieldId === form.id"
-      @click="setActiveId(form.id)"
+      v-for="field in draggableField"
+      :rule="field.rule"
+      :key="field.id"
+      :actived="activeFieldId === field.id"
+      @click="setActiveId(field.id)"
     ></draggable-form-item>
   </draggable>
 </template>
@@ -23,7 +23,7 @@ export default {
     };
   },
   computed: {
-    draggableForms() {
+    draggableField() {
       return this.forms.map(form => {
         return {
           id: form.id,
@@ -37,6 +37,7 @@ export default {
   methods: {
     setActiveId(fieldID) {
       this.activeFieldId = fieldID;
+      this.$emit('selectActivedField', this.draggableField.find(field => field.id === fieldID));
     }
   },
   components: {
@@ -53,6 +54,7 @@ export default {
   max-height: calc(100vh - 62px);
   background-color: white;
   overflow-y: auto;
+  padding: 10px 15px;
 }
 
 .form-item {

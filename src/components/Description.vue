@@ -1,10 +1,12 @@
 <template>
-  <div>FDescription</div>
+  <div>{{placeholder}}</div>
 </template>
-
 
 <script>
 export default {
-  name: 'f-description',
-}
+  name: "f-description",
+  props: {
+    placeholder: String
+  }
+};
 </script>

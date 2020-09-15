@@ -4,10 +4,10 @@
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
     <a-col flex="auto" class="content">
-      <preview-area></preview-area>
+      <preview-area @selectActivedField="activedField = $event"></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
-      <editor-panel></editor-panel>
+      <editor-panel :activedField="activedField"></editor-panel>
     </a-col>
   </a-row>
 </template>
@@ -23,6 +23,7 @@ export default {
     return {
       basicComps: basicComps,
       advancedComps: advancedComps,
+      activedField: null,
     };
   },
   components: { Toolbar, PreviewArea, EditorPanel }
