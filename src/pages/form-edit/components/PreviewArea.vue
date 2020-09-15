@@ -1,5 +1,11 @@
 <template>
-  <draggable v-model="draggableFields" class="prewview" group="viewcomps">
+  <draggable
+    v-model="draggableFields"
+    class="prewview"
+    tag="a-form"
+    :component-data="{props: {layout: 'horizontal'}}"
+    group="viewcomps"
+  >
     <draggable-form-item
       v-for="field in draggableFields"
       :rule="field.rule"

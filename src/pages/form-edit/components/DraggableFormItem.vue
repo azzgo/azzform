@@ -31,7 +31,11 @@ export default {
     return h(
       "a-form-item",
       {
-        props: { label: this.rule.title },
+        props: {
+          label: this.rule.title,
+          labelCol: { span: 4 },
+          wrapperCol: { span: 20 }
+        },
         class: { active: this.actived, "form-item": true },
         nativeOn: {
           click: handleClick
