@@ -6,7 +6,9 @@ export const basicComps = [
       title: "描述",
       field: "description", // 后续随机生成，存储相关
       placeholder: "这是一段可疑的描述",
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
   {
@@ -15,7 +17,9 @@ export const basicComps = [
       type: "input",
       title: "单行文本",
       field: "input", // 后续随机生成，存储相关
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
   {
@@ -25,7 +29,9 @@ export const basicComps = [
       title: "多行文本",
       field: "textarea", // 后续随机生成，存储相关
       props: {},
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
   {
@@ -36,7 +42,9 @@ export const basicComps = [
       field: "datetime", // 后续随机生成，存储相关
       props: {},
       placeholder: "",
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
   {
@@ -46,7 +54,9 @@ export const basicComps = [
       title: "数字",
       field: "number", // 后续随机生成，存储相关
       props: {},
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
   {
@@ -57,7 +67,9 @@ export const basicComps = [
       field: "radio", // 后续随机生成，存储相关
       props: {},
       value: "",
-      col: 24,
+      col: {
+        span: 24
+      },
     },
   },
 ];

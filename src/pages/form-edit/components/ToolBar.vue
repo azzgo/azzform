@@ -51,6 +51,9 @@ export default {
           field: item.defaultRule.field + globalCount,
           props: {
             ...item.defaultRule.props
+          },
+          col: {
+            ...item.defaultRule.col
           }
         }
       };

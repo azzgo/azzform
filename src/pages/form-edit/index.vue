@@ -12,7 +12,7 @@ import EditHeader from "./components/Header.vue";
 
 export default {
   components: {
-    EditHeader,
-  },
+    EditHeader
+  }
 };
 </script>

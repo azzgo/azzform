@@ -9,7 +9,7 @@
       </a-col>
       <a-col class="action-button">
         <a-space>
-          <a-button type="primary">预览</a-button>
+          <a-button type="primary" @click="toPreview">预览</a-button>
           <a-button type="primary">保存</a-button>
         </a-space>
       </a-col>
@@ -18,9 +18,22 @@
 </template>
 
 <script>
-
 export default {
-  name: 'preview-header-section',
+  name: "preview-header-section",
+  methods: {
+    toPreview() {
+      this.$info({
+        title: "预览",
+        width: '100vw',
+        content: this.$createElement("form-create", {
+          props: {
+            rule: this.$store.getters.rules,
+            option: { submitBtn: false }
+          }
+        })
+      });
+    }
+  }
 };
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <draggable :list="draggableFields" class="prewview" group="viewcomps">
+  <draggable v-model="draggableFields" class="prewview" group="viewcomps">
     <draggable-form-item
       v-for="field in draggableFields"
       :rule="field.rule"
@@ -13,19 +13,32 @@
 <script>
 import draggable from "vuedraggable";
 import DraggableFormItem from "./DraggableFormItem.vue";
+import { COMMIT_TYPE } from "../../../store";
 
 export default {
   name: "PreviewArea",
   data() {
     return {
-      draggableFields: [],
       activeFieldId: ""
     };
+  },
+  computed: {
+    draggableFields: {
+      get() {
+        return this.$store.state.draggableFields;
+      },
+      set(value) {
+        return this.$store.commit(COMMIT_TYPE.draggableFields_update, value);
+      }
+    }
   },
   methods: {
     setActiveId(fieldID) {
       this.activeFieldId = fieldID;
-      this.$emit('selectActivedField', this.draggableFields.find(field => field.id === fieldID));
+      this.$emit(
+        "selectActivedField",
+        this.draggableFields.find(field => field.id === fieldID)
+      );
     }
   },
   components: {
