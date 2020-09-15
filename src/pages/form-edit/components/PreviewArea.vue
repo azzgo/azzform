@@ -1,6 +1,6 @@
 <template>
   <draggable :list="forms" class="prewview" group="viewcomps">
-    <div class="form-item" v-for="formItem in forms" :key="formItem.id">{{formItem.name}}</div>
+    <form-create v-model="fApi" :rule="formRules" :option="formOptions"></form-create>
   </draggable>
 </template>
 
@@ -11,10 +11,19 @@ export default {
   name: "PreviewArea",
   data() {
     return {
-      forms: [],
+      fApi: {},
+      formRules: [
+        {
+          type: "input",
+          field: "goods_name",
+          title: "商品名称"
+        }
+      ],
+      formOptions: { submitBtn: false, resetBtn: false },
+      forms: []
     };
   },
-  components: { draggable },
+  components: { draggable }
 };
 </script>
 

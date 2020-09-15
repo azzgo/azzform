@@ -11,20 +11,18 @@
   </div>
 </template>
 <script>
-
 const TAB_KEYS = {
   fieldProperties: "字段属性",
-  formProperties: "表单数性",
+  formProperties: "表单数性"
 };
 
 export default {
   data() {
     return {
-      tabKeys: TAB_KEYS,
+      tabKeys: TAB_KEYS
     };
   },
-  components: {
-  },
+  components: {}
 };
 </script>
 
