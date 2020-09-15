@@ -1,17 +1,16 @@
 <template>
   <div class="editor-panel">
-    <tabs :animated="false">
-      <tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
+    <a-tabs :animated="false">
+      <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
         <span>form</span>
-      </tab-pane>
-      <tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
+      </a-tab-pane>
+      <a-tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
         <span></span>
-      </tab-pane>
-    </tabs>
+      </a-tab-pane>
+    </a-tabs>
   </div>
 </template>
 <script>
-import { Tabs } from "ant-design-vue";
 
 const TAB_KEYS = {
   fieldProperties: "字段属性",
@@ -25,8 +24,6 @@ export default {
     };
   },
   components: {
-    Tabs,
-    TabPane: Tabs.TabPane,
   },
 };
 </script>

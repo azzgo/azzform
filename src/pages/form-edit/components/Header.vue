@@ -2,7 +2,7 @@
   <header class="header">
     <a-row type="flex" align="middle">
       <a-col class="nav-back">
-        <icon type="left" />返回
+        <a-icon type="left" />返回
       </a-col>
       <a-col class="center-menu" flex="auto">
         <div class="item">表单设计</div>
@@ -18,10 +18,8 @@
 </template>
 
 <script>
-import { Icon, Row, Col, Space, Button } from "ant-design-vue";
 
 export default {
-  components: { Icon, ARow: Row, ACol: Col, ASpace: Space, AButton: Button },
 };
 </script>
 

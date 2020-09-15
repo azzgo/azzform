@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { Card, Row, Col } from "ant-design-vue";
 import draggable from "vuedraggable";
 
 let globalCount = 0;
@@ -54,9 +53,6 @@ export default {
     },
   },
   components: {
-    ACard: Card,
-    ARow: Row,
-    ACol: Col,
     draggable,
   },
 };
