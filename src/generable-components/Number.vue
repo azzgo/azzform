@@ -1,10 +1,10 @@
 <template>
-  <div>number</div>
+  <a-input-number />
 </template>
 
 <script>
 import config from "../contants/config";
 export default {
-  name: `${config.editComponentPrefix}number`
+  name: `${config.editComponentPrefix}input-number`
 };
 </script>

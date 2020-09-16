@@ -43,7 +43,7 @@ export default {
       },
       [
         h(`${config.editComponentPrefix}${this.rule.type}`, {
-          props: { placeholder: this.rule.placeholder }
+          props: { ...this.rule.props, placeholder: this.rule.placeholder }
         })
       ]
     );

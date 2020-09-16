@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 import FormEditPage from "./pages/form-edit/index.vue";
 import Home from "./pages/home/index.vue";
 import App from "./App.vue";
-import FormCreate from "@form-create/ant-design-vue";
 import VueAntd from "ant-design-vue";
 import { createStore } from "./store";
 import "ant-design-vue/dist/antd.css";
@@ -14,7 +13,6 @@ Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(VueAntd);
 Vue.use(Vuex);
-Vue.use(FormCreate);
 
 new Vue({
   router: new VueRouter({

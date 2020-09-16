@@ -50,10 +50,12 @@ export const basicComps = [
   {
     name: "数字",
     defaultRule: {
-      type: "number",
+      type: "input",
       title: "数字",
       field: "number", // 后续随机生成，存储相关
-      props: {},
+      props: {
+        type: 'number',
+      },
       col: {
         span: 24
       },
