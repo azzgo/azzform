@@ -14,24 +14,36 @@
         </a-space>
       </a-col>
     </a-row>
+    <a-drawer :visible="previewDrawerVisible" @close="previewDrawerVisible = false" height="100vh" title="预览" placement="bottom" >
+      <form-renderer :schema="formSchema"></form-renderer>
+    </a-drawer>
   </header>
 </template>
 
 <script>
+import Renderer from '@/core/renderer/index.vue'
+import { fromPairs } from 'lodash-es'
 export default {
   name: "preview-header-section",
+  components: {
+    [Renderer.name]: Renderer,
+  },
+  data() {
+    return {
+      previewDrawerVisible: false,
+    }
+  },
+  computed: {
+    formSchema() {
+      return {
+        type: 'object',
+        properties: fromPairs(this.$store.state.draggableFields.map((field) => [field.id, field.schema]))
+      }
+    }
+  },
   methods: {
     toPreview() {
-      this.$info({
-        title: "预览",
-        width: '100vw',
-        content: this.$createElement("form-create", {
-          props: {
-            rule: this.$store.getters.rules,
-            option: { submitBtn: false }
-          }
-        })
-      });
+      this.previewDrawerVisible = true
     }
   }
 };

@@ -1,17 +1,11 @@
 <script>
-import config from "../../../contants/config";
 import draggable from "vuedraggable";
-
-import Datetime from "../../../generable-components/Datetime.vue";
-import Description from "../../../generable-components/Description.vue";
-import Input from "../../../generable-components/Input.vue";
-import FNumber from "../../../generable-components/Number.vue";
-import Radio from "../../../generable-components/Radio.vue";
-import Textarea from "../../../generable-components/Textarea.vue";
+import { widgets } from '@/core';
+import ui from '@/core/contants/ui';
 
 export default {
   props: {
-    rule: Object,
+    schema: Object,
     actived: {
       type: Boolean,
       default: false
@@ -19,12 +13,7 @@ export default {
   },
   components: {
     draggable,
-    [Datetime.name]: Datetime,
-    [Description.name]: Description,
-    [Input.name]: Input,
-    [FNumber.name]: FNumber,
-    [Radio.name]: Radio,
-    [Textarea.name]: Textarea
+    ...widgets,
   },
   render(h) {
     const handleClick = this.handleClick.bind(this);
@@ -32,9 +21,7 @@ export default {
       "a-form-item",
       {
         props: {
-          label: this.rule.title,
-          labelCol: { span: 4 },
-          wrapperCol: { span: 20 }
+          label: this.schema.title,
         },
         class: { active: this.actived, "form-item": true },
         nativeOn: {
@@ -42,8 +29,8 @@ export default {
         }
       },
       [
-        h(`${config.editComponentPrefix}${this.rule.type}`, {
-          props: { ...this.rule.props, placeholder: this.rule.placeholder }
+        h(this.schema[ui.widget], {
+          props: { placeholder: this.schema['ui:placeholder'], preview: true }
         })
       ]
     );

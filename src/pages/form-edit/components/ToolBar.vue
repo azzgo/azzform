@@ -9,7 +9,7 @@
           :sort="false"
         >
           <a-col :span="12" v-for="comp in tool.comps" :key="comp.name">
-            <span class="item">{{comp.name}}</span>
+            <span class="item">{{comp.text}}</span>
           </a-col>
         </draggable>
       </a-row>
@@ -19,52 +19,42 @@
 
 <script>
 import draggable from "vuedraggable";
-
-let globalCount = 0;
+import { cloneDeep } from "lodash-es";
+import { nanoid } from "nanoid";
 
 export default {
   props: {
     basicComps: Array,
-    advanceComps: Array
+    advanceComps: Array,
   },
   computed: {
     tools() {
       return [
         {
           name: "基础组件",
-          comps: this.basicComps
+          comps: this.basicComps,
         },
         {
           name: "高级组件",
-          comps: this.advanceComps
-        }
+          comps: this.advanceComps,
+        },
       ];
-    }
+    },
   },
   methods: {
     cloneComp(item) {
       return {
-        name: item.name,
-        id: globalCount++,
-        rule: {
-          ...item.defaultRule,
-          field: item.defaultRule.field + globalCount,
-          props: {
-            ...item.defaultRule.props
-          },
-          col: {
-            ...item.defaultRule.col
-          }
-        }
+        id: `${item.name}_${nanoid()}`,
+        schema: cloneDeep(item.schema),
       };
     },
     log($event) {
       console.log($event);
-    }
+    },
   },
   components: {
-    draggable
-  }
+    draggable,
+  },
 };
 </script>
 

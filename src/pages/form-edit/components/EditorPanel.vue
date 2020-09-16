@@ -5,10 +5,10 @@
         <div class="tab-panel">
           <div v-if="activedField">
             <a-form-item label="标题">
-              <a-input v-model="activedField.rule.title" />
+              <a-input v-model="activedField.schema.title" />
             </a-form-item>
-            <a-form-item label="提示" v-if="activedField.rule.placeholder != null">
-              <a-textarea v-model="activedField.rule.placeholder" />
+            <a-form-item label="提示" v-if="activedField.schema['ui:placeholder'] != null">
+              <a-textarea v-model="activedField.schema['ui:placeholder']" />
             </a-form-item>
           </div>
           <div v-else>请选择一个表单元素</div>

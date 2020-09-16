@@ -8,7 +8,7 @@
   >
     <draggable-form-item
       v-for="field in draggableFields"
-      :rule="field.rule"
+      :schema="field.schema"
       :key="field.id"
       :actived="activeFieldId === field.id"
       @click="setActiveId(field.id)"
