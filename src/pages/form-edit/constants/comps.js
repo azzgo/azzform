@@ -1,4 +1,4 @@
-import description from '@/core/description/config'
+import description from '@/core/widgets/description/config'
 
 
 export const basicComps = [

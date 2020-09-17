@@ -1,5 +1,6 @@
 <script>
-import { widgets } from "..";
+import { widgets } from "../index";
+
 export default {
   name: "form-renderer",
   props: {

@@ -1,6 +1,6 @@
 <script>
 import draggable from "vuedraggable";
-import { widgets } from '@/core';
+import { widgets } from '@/core/widgets';
 import ui from '@/core/contants/ui';
 
 export default {
