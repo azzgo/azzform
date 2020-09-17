@@ -1,4 +1,4 @@
 export default {
   widget: 'ui:widget',
-  placeholder: 'ui:placeholder'
+  options: 'ui:options',
 }

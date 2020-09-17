@@ -25,8 +25,10 @@ export function getFieldProps(obj) {
 
   let props = {};
 
-  if (obj[ui.placeholder] != null) {
-    props.placeholder = obj[ui.placeholder];
+  if (obj[ui.options] != null) {
+    props = {
+      ...obj[ui.options]
+    };
   }
 
   return props;

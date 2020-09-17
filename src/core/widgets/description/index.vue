@@ -1,5 +1,5 @@
 <script>
-import ui from '../contants/ui';
+import ui from '../../contants/ui';
 import config from './config'
 export default {
   name: config.schema[ui.widget],

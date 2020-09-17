@@ -1,5 +1,6 @@
 <script>
 import { widgets } from "../index";
+import { parser } from "./parser";
 
 export default {
   name: "form-renderer",
@@ -10,26 +11,13 @@ export default {
     ...widgets,
   },
   render(h) {
+    const fileds = parser(this.schema);
     return h(
       "div",
-      Object.keys(this.schema.properties).map((fieldName) => {
-        return h(
-          "a-form-item",
-          {
-            props: {
-              label: this.schema.properties[fieldName].title,
-            },
-          },
-          [
-            h(this.schema.properties[fieldName]["ui:widget"], {
-              props: {
-                placeholder: this.schema.properties[fieldName][
-                  "ui:placeholder"
-                ],
-              },
-            }),
-          ]
-        );
+      fileds.map((filed) => {
+        return h("a-form-item", { props: { label: filed.title } }, [
+          h(filed.widget, { props: filed.props }, filed.children),
+        ]);
       })
     );
   },

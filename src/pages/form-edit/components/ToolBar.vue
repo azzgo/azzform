@@ -46,6 +46,7 @@ export default {
       return {
         id: `${item.name}_${nanoid()}`,
         schema: cloneDeep(item.schema),
+        settings: cloneDeep(item.settings),
       };
     },
     log($event) {

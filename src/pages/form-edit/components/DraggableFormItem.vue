@@ -2,6 +2,7 @@
 import draggable from "vuedraggable";
 import { widgets } from '@/core/widgets';
 import ui from '@/core/contants/ui';
+import { getFieldProps } from '@/core/utils/getField';
 
 export default {
   props: {
@@ -30,7 +31,7 @@ export default {
       },
       [
         h(this.schema[ui.widget], {
-          props: { placeholder: this.schema['ui:placeholder'], preview: true }
+          props: { ...getFieldProps(this.schema), preview: true }
         })
       ]
     );
