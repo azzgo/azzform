@@ -40,5 +40,9 @@ export default {
 
 .form-item {
   margin-bottom: 0;
+
+  /deep/ input:read-only, /deep/ textarea:read-only {
+    cursor: pointer;
+  }
 }
 </style>
