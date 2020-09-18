@@ -67,6 +67,7 @@ export default {
 
 .form-item {
   cursor: pointer;
+  border: 1px transparent solid;
 }
 </style>
 
