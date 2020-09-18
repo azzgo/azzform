@@ -74,7 +74,6 @@ export default {
 .prewview {
   .sortable-ghost {
     border: 1px red dashed !important;
-    width: 100%;
     min-height: 40px;
 
     .item {
