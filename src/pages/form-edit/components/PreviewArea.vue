@@ -66,7 +66,6 @@ export default {
 }
 
 .form-item {
-  padding: 5px 10px;
   cursor: pointer;
 }
 </style>

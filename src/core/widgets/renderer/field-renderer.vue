@@ -10,23 +10,33 @@ export default {
     ...widgets,
   },
   render(h) {
-    return h("a-col", { props: { span: this.field.column } }, [
-      h(
-        "a-form-item",
-        {
-          props: {
-            label: this.field.title,
+    return h(
+      "a-col",
+      { props: { span: this.field.column }, class: { 'col-item': true } },
+      [
+        h(
+          "a-form-item",
+          {
+            props: {
+              label: this.field.title,
+            },
           },
-        },
-        [
-          h(
-            this.field.widget,
-            { props: { ...this.field.props, readOnly: this.readOnly } },
-            this.field.children
-          ),
-        ]
-      ),
-    ]);
+          [
+            h(
+              this.field.widget,
+              { props: { ...this.field.props, readOnly: this.readOnly } },
+              this.field.children
+            ),
+          ]
+        ),
+      ]
+    );
   },
 };
 </script>
+
+<style scoped>
+.col-item {
+  padding: 5px 10px;
+}
+</style>
