@@ -19,7 +19,7 @@ export default {
   render(h) {
     const field = fieldParse(this.id, this.schema);
     return h("field-renderer", {
-      props: { field: field },
+      props: { field: field, readOnly: true },
       nativeOn: { click: this.handleClick },
       class: { active: this.actived, "form-item": true },
     });

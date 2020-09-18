@@ -17,6 +17,12 @@
               >
                 <a-textarea v-model="activedField.schema['ui:options']['placeholder']" />
               </a-form-item>
+              <a-form-item
+                label="允许删除"
+                v-if="activedField.schema['ui:options']['allowClear'] != null"
+              >
+                <a-checkbox v-model="activedField.schema['ui:options']['allowClear']" />
+              </a-form-item>
             </div>
             <a-form-item label="栅格">
               <a-slider v-model="activedField.schema['ui:column']" :min="1" :max="24" />

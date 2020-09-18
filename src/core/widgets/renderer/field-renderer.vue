@@ -4,6 +4,7 @@ export default {
   name: "field-renderer",
   props: {
     field: Object,
+    readOnly: Boolean,
   },
   components: {
     ...widgets,
@@ -19,7 +20,13 @@ export default {
           width: this.field.width,
         },
       },
-      [h(this.field.widget, { props: this.field.props }, this.field.children)]
+      [
+        h(
+          this.field.widget,
+          { props: { ...this.field.props, readOnly: this.readOnly } },
+          this.field.children
+        ),
+      ]
     );
   },
 };
