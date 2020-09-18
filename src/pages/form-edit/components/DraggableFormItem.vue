@@ -35,7 +35,6 @@ export default {
 <style lang="less" scoped>
 .active {
   border: 1px #ccc dashed !important;
-  width: 100%;
   min-height: 40px;
 }
 
