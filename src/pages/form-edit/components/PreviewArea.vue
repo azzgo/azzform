@@ -3,13 +3,14 @@
     v-model="draggableFields"
     class="prewview"
     tag="a-form"
-    :component-data="{props: {layout: 'horizontal'}}"
+    :component-data="{props: {layout: 'vertical'}}"
     group="viewcomps"
   >
     <draggable-form-item
       v-for="field in draggableFields"
       :schema="field.schema"
       :key="field.id"
+      :id="field.id"
       :actived="activeFieldId === field.id"
       @click="setActiveId(field.id)"
     ></draggable-form-item>
@@ -25,7 +26,7 @@ export default {
   name: "PreviewArea",
   data() {
     return {
-      activeFieldId: ""
+      activeFieldId: "",
     };
   },
   computed: {
@@ -35,22 +36,22 @@ export default {
       },
       set(value) {
         return this.$store.commit(COMMIT_TYPE.draggableFields_update, value);
-      }
-    }
+      },
+    },
   },
   methods: {
     setActiveId(fieldID) {
       this.activeFieldId = fieldID;
       this.$emit(
         "selectActivedField",
-        this.draggableFields.find(field => field.id === fieldID)
+        this.draggableFields.find((field) => field.id === fieldID)
       );
-    }
+    },
   },
   components: {
     draggable,
-    DraggableFormItem
-  }
+    DraggableFormItem,
+  },
 };
 </script>
 

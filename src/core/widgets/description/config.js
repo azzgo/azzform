@@ -6,9 +6,8 @@ export default {
   schema: {
     title: "描述",
     type: "string",
-    [ui.widget]: "description",
-  },
-  settings: {
+    [ui.widget]: "c-description",
+    [ui.col]: 24,
     [ui.options]: {
       placeholder: "这是一段无用的描述",
     },

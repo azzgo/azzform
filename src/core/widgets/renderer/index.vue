@@ -1,6 +1,7 @@
 <script>
 import { widgets } from "../index";
-import { parser } from "./parser";
+import { schemaParse } from "./parser";
+import FieldRenderer from "./field-renderer.vue";
 
 export default {
   name: "form-renderer",
@@ -9,15 +10,21 @@ export default {
   },
   components: {
     ...widgets,
+    [FieldRenderer.name]: FieldRenderer,
   },
   render(h) {
-    const fileds = parser(this.schema);
+    const fileds = schemaParse(this.schema);
     return h(
-      "div",
+      "a-form",
+      {
+        props: {
+          layout: "vertical",
+        },
+      },
       fileds.map((filed) => {
-        return h("a-form-item", { props: { label: filed.title } }, [
-          h(filed.widget, { props: filed.props }, filed.children),
-        ]);
+        return h("a-form-item", {
+          props: { filed },
+        });
       })
     );
   },

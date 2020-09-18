@@ -1,46 +1,34 @@
 <script>
 import draggable from "vuedraggable";
-import { widgets } from '@/core/widgets';
-import ui from '@/core/contants/ui';
-import { getFieldProps } from '@/core/utils/getField';
+import FieldRenderer from "@/core/widgets/renderer/field-renderer.vue";
+import { fieldParse } from "@/core/widgets/renderer/parser";
 
 export default {
   props: {
     schema: Object,
+    id: String,
     actived: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   components: {
     draggable,
-    ...widgets,
+    [FieldRenderer.name]: FieldRenderer,
   },
   render(h) {
-    const handleClick = this.handleClick.bind(this);
-    return h(
-      "a-form-item",
-      {
-        props: {
-          label: this.schema.title,
-        },
-        class: { active: this.actived, "form-item": true },
-        nativeOn: {
-          click: handleClick
-        }
-      },
-      [
-        h(this.schema[ui.widget], {
-          props: { ...getFieldProps(this.schema), preview: true }
-        })
-      ]
-    );
+    const field = fieldParse(this.id, this.schema);
+    return h("field-renderer", {
+      props: { field: field },
+      nativeOn: { click: this.handleClick },
+      class: { active: this.actived, "form-item": true },
+    });
   },
   methods: {
     handleClick() {
       this.$emit("click");
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -27,9 +27,13 @@ export function getFieldProps(obj) {
 
   if (obj[ui.options] != null) {
     props = {
-      ...obj[ui.options]
+      ...obj[ui.options],
     };
   }
 
   return props;
+}
+
+export function getFieldColumn(obj) {
+  return (obj && obj[ui.col]) || 24;
 }

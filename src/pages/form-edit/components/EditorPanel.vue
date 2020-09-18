@@ -4,6 +4,9 @@
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
         <div class="tab-panel">
           <div v-if="activedField">
+            <a-form-item label="ID">
+              <a-input :value="activedField.id" readOnly />
+            </a-form-item>
             <a-form-item label="标题">
               <a-input v-model="activedField.schema.title" />
             </a-form-item>
@@ -15,6 +18,9 @@
                 <a-textarea v-model="activedField.schema['ui:options']['placeholder']" />
               </a-form-item>
             </div>
+            <a-form-item label="栅格">
+              <a-slider v-model="activedField.schema['ui:column']" :min="1" :max="24" />
+            </a-form-item>
           </div>
           <div v-else>请选择一个表单元素</div>
         </div>
@@ -28,6 +34,7 @@
   </div>
 </template>
 <script>
+
 const TAB_KEYS = {
   fieldProperties: "字段属性",
   formProperties: "表单数性",
@@ -42,13 +49,6 @@ export default {
       tabKeys: TAB_KEYS,
     };
   },
-  computed: {
-    settingSchema() {
-      // this.$store.state.
-      return 1
-    }
-  },
-  components: {},
 };
 </script>
 

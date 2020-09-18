@@ -1,23 +1,28 @@
 import ui from "@/core/contants/ui";
-import { getFieldWidget } from "@/core/utils/getField";
+import { getFieldColumn, getFieldWidget } from "@/core/utils/getField";
 
-export function parser(schema) {
+export function schemaParse(schema) {
   if (schema.type === "object" && schema.properties) {
     return Object.keys(schema.properties).map((propName) => {
       const propValue = schema.properties[propName] || {};
 
-      let fieldObj = {
-        fieldId: propName,
-        widget: getFieldWidget(propValue),
-        title: propValue.title,
-        props: {
-          ...(propValue[ui.options] || {}),
-        },
-        children: parser(propValue),
-      };
-      return fieldObj;
+      return fieldParse(propName, propValue);
     });
   }
 
   return null;
+}
+
+export function fieldParse(id, fieldSchema) {
+  let fieldObj = {
+    fieldId: id,
+    widget: getFieldWidget(fieldSchema),
+    title: fieldSchema.title,
+    column: getFieldColumn(fieldSchema),
+    props: {
+      ...(fieldSchema[ui.options] || {}),
+    },
+    children: schemaParse(fieldSchema),
+  };
+  return fieldObj;
 }

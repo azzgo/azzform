@@ -44,9 +44,8 @@ export default {
   methods: {
     cloneComp(item) {
       return {
-        id: `${item.name}_${nanoid()}`,
+        id: `${item.name}_${nanoid(10)}`,
         schema: cloneDeep(item.schema),
-        settings: cloneDeep(item.settings),
       };
     },
     log($event) {
