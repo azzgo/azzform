@@ -8,7 +8,7 @@
           :group="{ name: 'viewcomps', pull: 'clone', put: false}"
           :sort="false"
         >
-          <a-col :span="12" v-for="comp in tool.comps" :key="comp.name">
+          <a-col class="tool-item" :span="12" v-for="comp in tool.comps" :key="comp.name">
             <span class="item">{{comp.text}}</span>
           </a-col>
         </draggable>

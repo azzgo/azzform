@@ -72,6 +72,10 @@ export default {
 
 <style lang="less">
 .prewview {
+  .tool-item {
+    width: 100%;
+  }
+
   .sortable-ghost {
     border: 1px red dashed !important;
     min-height: 40px;

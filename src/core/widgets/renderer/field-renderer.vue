@@ -38,5 +38,6 @@ export default {
 <style scoped>
 .col-item {
   padding: 5px 10px;
+  box-sizing: border-box;
 }
 </style>
