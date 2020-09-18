@@ -13,7 +13,7 @@ export default {
     [FieldRenderer.name]: FieldRenderer,
   },
   render(h) {
-    const fileds = schemaParse(this.schema);
+    const fields = schemaParse(this.schema);
     return h(
       "a-form",
       {
@@ -21,9 +21,9 @@ export default {
           layout: "vertical",
         },
       },
-      fileds.map((filed) => {
-        return h("a-form-item", {
-          props: { filed },
+      fields.map((field) => {
+        return h("field-renderer", {
+          props: { field },
         });
       })
     );
