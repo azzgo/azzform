@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Renderer from '@/core/widgets/renderer/index.vue'
+import Renderer from '@/core/renderer/index.vue'
 import { fromPairs } from 'lodash-es'
 export default {
   name: "preview-header-section",

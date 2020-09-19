@@ -1,5 +1,5 @@
 <script>
-import { widgets } from "../index";
+import { widgets } from "../widgets";
 import { schemaParse } from "./parser";
 import FieldRenderer from "./field-renderer.vue";
 
