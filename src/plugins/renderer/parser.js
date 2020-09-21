@@ -16,6 +16,7 @@ export function schemaParse(schema) {
 export function fieldParse(id, fieldSchema) {
   let fieldObj = {
     fieldId: id,
+    type: fieldSchema.type,
     widget: getFieldWidget(fieldSchema),
     title: fieldSchema.title,
     column: getFieldColumn(fieldSchema),

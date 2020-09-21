@@ -4,7 +4,7 @@
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
     <a-col flex="auto" class="content">
-      <preview-area :schema="schema" @schemaChange="$emit('schema-change', $event)"></preview-area>
+      <preview-area :schema="schema" @schema-change="$emit('schema-change', $event)"></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
       <editor-panel></editor-panel>
@@ -25,7 +25,7 @@ export default {
   },
   model: {
     prop: "schema",
-    event: "schemaChange",
+    event: "schema-change",
   },
   data() {
     return {

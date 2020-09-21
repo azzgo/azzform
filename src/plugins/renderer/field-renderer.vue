@@ -1,4 +1,5 @@
 <script>
+import { Col } from 'ant-design-vue';
 import { widgets } from "./widgets";
 export default {
   name: "field-renderer",
@@ -8,6 +9,7 @@ export default {
   },
   components: {
     ...widgets,
+    ['a-col']: Col
   },
   render(h) {
     return h(

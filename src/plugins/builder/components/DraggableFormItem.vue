@@ -2,10 +2,12 @@
 import draggable from "vuedraggable";
 import FieldRenderer from "@/plugins/renderer/field-renderer.vue";
 import { fieldParse } from "@/plugins/renderer/parser";
-
 export default {
   props: {
-    schema: Object,
+    fieldSchema: {
+      type: Object,
+      default: () => ({}),
+    },
     id: String,
     actived: {
       type: Boolean,
@@ -17,9 +19,9 @@ export default {
     [FieldRenderer.name]: FieldRenderer,
   },
   render(h) {
-    const field = fieldParse(this.id, this.schema);
+    const field = fieldParse(this.id, this.fieldSchema);
     return h("field-renderer", {
-      props: { field: field, readOnly: true },
+      props: { field, readOnly: true },
       nativeOn: { click: this.handleClick },
       class: { active: this.actived, "form-item": true },
     });
@@ -41,7 +43,8 @@ export default {
 .form-item {
   margin-bottom: 0;
 
-  /deep/ input:read-only, /deep/ textarea:read-only {
+  /deep/ input:read-only,
+  /deep/ textarea:read-only {
     cursor: pointer;
   }
 }

@@ -1,23 +1,17 @@
 <template>
-  <draggable
-    v-model="draggableFields"
-    class="prewview"
-    group="viewcomps"
-    tag="a-form"
-  >
+  <draggable v-model="draggableFields" class="prewview" group="viewcomps" tag="a-form">
     <draggable-form-item
       v-for="field in draggableFields"
-      :schema="field.schema"
-      :key="field.id"
-      :id="field.id"
-      :actived="selectFieldId === field.id"
-      @click="setActiveId(field.id)"
+      :fieldSchema="field.schema"
+      :key="field.fieldId"
+      :id="field.fieldId"
+      :actived="selectFieldId === field.fieldId"
+      @click="setActiveId(field.fieldId)"
     ></draggable-form-item>
   </draggable>
 </template>
 
 <script>
-import { schemaParse } from "@/plugins/renderer/parser";
 import draggable from "vuedraggable";
 import DraggableFormItem from "./DraggableFormItem.vue";
 import { fromPairs } from "lodash-es";
@@ -39,12 +33,24 @@ export default {
   computed: {
     draggableFields: {
       get() {
-        return schemaParse(this.schema);
+        // 需要拆分下
+        return this.schema && this.schema.properties
+          ? Object.keys(this.schema.properties).map((propName) => {
+              const propValue = this.schema.properties[propName] || {};
+
+              return {
+                fieldId: propName,
+                schema: propValue,
+              };
+            })
+          : [];
       },
       set(value) {
-        return this.$emit("schemaChange", {
+        return this.$emit("schema-change", {
           type: "object",
-          properties: fromPairs(value.map((field) => [field.id, field.schema])),
+          properties: fromPairs(
+            value.map((field) => [field.fieldId, field.schema])
+          ),
         });
       },
     },
