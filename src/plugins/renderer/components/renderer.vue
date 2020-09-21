@@ -1,6 +1,6 @@
 <script>
-import { widgets } from "./widgets";
-import { schemaParse } from "./parser";
+import { widgets } from "../widgets";
+import { schemaParse } from "../utils/parser";
 import FieldRenderer from "./field-renderer.vue";
 import { Form, Modal } from 'ant-design-vue'
 

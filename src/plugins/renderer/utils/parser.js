@@ -1,5 +1,5 @@
-import ui from "@/plugins/renderer/contants/ui";
-import { getFieldColumn, getFieldWidget } from "@/plugins/renderer/utils/getField";
+import ui from "../contants/ui";
+import { getFieldColumn, getFieldWidget } from "../utils/getField";
 
 export function schemaParse(schema) {
   if (schema.type === "object" && schema.properties) {

@@ -1,6 +1,6 @@
 <script>
 import { Col } from 'ant-design-vue';
-import { widgets } from "./widgets";
+import { widgets } from "../widgets";
 export default {
   name: "field-renderer",
   props: {

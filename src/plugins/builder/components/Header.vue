@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import Renderer from "@/plugins/renderer/renderer.vue";
+import Renderer from "@/plugins/renderer/components/renderer.vue";
 import { Row, Col, Icon, Button, Space, Drawer } from 'ant-design-vue'
 
 export default {

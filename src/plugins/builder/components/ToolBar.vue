@@ -22,7 +22,6 @@ import draggable from "vuedraggable";
 import { cloneDeep } from "lodash-es";
 import { nanoid } from "nanoid";
 import { Row, Col, Card } from "ant-design-vue";
-import { fieldParse } from "@/plugins/renderer/parser";
 
 export default {
   props: {
