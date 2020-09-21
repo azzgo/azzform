@@ -5,7 +5,7 @@
         <div class="tab-panel">
           <div v-if="activedField">
             <a-form-item label="ID">
-              <a-input :value="activedField.id" readOnly />
+              <a-input :value="activedField.id" readonly />
             </a-form-item>
             <a-form-item label="标题">
               <a-input v-model="activedField.schema.title" />
@@ -40,6 +40,7 @@
   </div>
 </template>
 <script>
+import { Tabs, Form, Checkbox, Slider, Input } from "ant-design-vue";
 
 const TAB_KEYS = {
   fieldProperties: "字段属性",
@@ -49,6 +50,15 @@ const TAB_KEYS = {
 export default {
   props: {
     activedField: null,
+  },
+  components: {
+    ["a-tabs"]: Tabs,
+    ["a-tab-pane"]: Tabs.TabPane,
+    ["a-form-item"]: Form.Item,
+    ["a-checkbox"]: Checkbox,
+    ["a-slider"]: Slider,
+    ["a-input"]: Input,
+    ["a-textarea"]: Input.TextArea,
   },
   data() {
     return {

@@ -4,10 +4,10 @@
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
     <a-col flex="auto" class="content">
-      <preview-area @selectActivedField="activedField = $event"></preview-area>
+      <preview-area :schema="schema" @schemaChange="$emit('schema-change', $event)"></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
-      <editor-panel :activedField="activedField"></editor-panel>
+      <editor-panel></editor-panel>
     </a-col>
   </a-row>
 </template>
@@ -17,16 +17,29 @@ import Toolbar from "../components/ToolBar.vue";
 import PreviewArea from "../components/PreviewArea.vue";
 import EditorPanel from "../components/EditorPanel.vue";
 import { basicComps, advancedComps } from "../constants/comps";
+import { Row, Col } from "ant-design-vue";
 
 export default {
+  props: {
+    schema: Object,
+  },
+  model: {
+    prop: "schema",
+    event: "schemaChange",
+  },
   data() {
     return {
       basicComps: basicComps,
       advancedComps: advancedComps,
-      activedField: null,
     };
   },
-  components: { Toolbar, PreviewArea, EditorPanel }
+  components: {
+    Toolbar,
+    PreviewArea,
+    EditorPanel,
+    ["a-row"]: Row,
+    ["a-col"]: Col,
+  },
 };
 </script>
 

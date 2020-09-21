@@ -1,7 +1,7 @@
 <script>
 import draggable from "vuedraggable";
-import FieldRenderer from "@/core/renderer/field-renderer.vue";
-import { fieldParse } from "@/core/renderer/parser";
+import FieldRenderer from "@/plugins/renderer/field-renderer.vue";
+import { fieldParse } from "@/plugins/renderer/parser";
 
 export default {
   props: {

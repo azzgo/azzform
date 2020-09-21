@@ -1,5 +1,5 @@
-import ui from "@/core/contants/ui";
-import { getFieldColumn, getFieldWidget } from "@/core/utils/getField";
+import ui from "@/plugins/renderer/contants/ui";
+import { getFieldColumn, getFieldWidget } from "@/plugins/renderer/utils/getField";
 
 export function schemaParse(schema) {
   if (schema.type === "object" && schema.properties) {
@@ -10,7 +10,7 @@ export function schemaParse(schema) {
     });
   }
 
-  return null;
+  return [];
 }
 
 export function fieldParse(id, fieldSchema) {

@@ -14,38 +14,46 @@
         </a-space>
       </a-col>
     </a-row>
-    <a-drawer :visible="previewDrawerVisible" @close="previewDrawerVisible = false" height="100vh" title="预览" placement="bottom" >
-      <form-renderer :schema="formSchema"></form-renderer>
+    <a-drawer
+      :visible="previewDrawerVisible"
+      @close="previewDrawerVisible = false"
+      height="100vh"
+      title="预览"
+      placement="bottom"
+    >
+      <form-renderer :schema="schema"></form-renderer>
     </a-drawer>
   </header>
 </template>
 
 <script>
-import Renderer from '@/core/renderer/index.vue'
-import { fromPairs } from 'lodash-es'
+import Renderer from "@/plugins/renderer/renderer.vue";
+import { Row, Col, Icon, Button, Space, Drawer } from 'ant-design-vue'
+
 export default {
   name: "preview-header-section",
+  props: {
+    schema: Object,
+  },
   components: {
     [Renderer.name]: Renderer,
+    ['a-row']: Row,
+    ['a-col']: Col,
+    ['a-icon']: Icon,
+    ['a-button']: Button,
+    ['a-space']: Space,
+    ['a-drawer']: Drawer,
   },
   data() {
     return {
       previewDrawerVisible: false,
-    }
-  },
-  computed: {
-    formSchema() {
-      return {
-        type: 'object',
-        properties: fromPairs(this.$store.state.draggableFields.map((field) => [field.id, field.schema]))
-      }
-    }
+    };
   },
   methods: {
     toPreview() {
-      this.previewDrawerVisible = true
-    }
-  }
+      this.previewDrawerVisible = true;
+    },
+  },
 };
 </script>
 

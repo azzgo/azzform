@@ -1,4 +1,4 @@
-import ui from "@/core/contants/ui";
+import ui from "@/plugins/renderer/contants/ui";
 
 export default {
   name: "description",

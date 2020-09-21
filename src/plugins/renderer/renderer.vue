@@ -1,7 +1,8 @@
 <script>
-import { widgets } from "../widgets";
+import { widgets } from "./widgets";
 import { schemaParse } from "./parser";
 import FieldRenderer from "./field-renderer.vue";
+import { Form, Modal } from 'ant-design-vue'
 
 export default {
   name: "form-renderer",
@@ -11,6 +12,8 @@ export default {
   components: {
     ...widgets,
     [FieldRenderer.name]: FieldRenderer,
+    ['a-form']: Form,
+    ['a-modal']: Modal,
   },
   render(h) {
     const fields = schemaParse(this.schema);

@@ -21,6 +21,7 @@
 import draggable from "vuedraggable";
 import { cloneDeep } from "lodash-es";
 import { nanoid } from "nanoid";
+import { Row, Col, Card } from "ant-design-vue";
 
 export default {
   props: {
@@ -54,6 +55,9 @@ export default {
   },
   components: {
     draggable,
+    ["a-row"]: Row,
+    ["a-col"]: Col,
+    ["a-card"]: Card,
   },
 };
 </script>

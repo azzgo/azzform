@@ -1,5 +1,5 @@
 <script>
-import { widgets } from "../widgets";
+import { widgets } from "./widgets";
 export default {
   name: "field-renderer",
   props: {

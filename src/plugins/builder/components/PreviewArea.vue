@@ -2,50 +2,57 @@
   <draggable
     v-model="draggableFields"
     class="prewview"
-    tag="a-form"
-    :component-data="{props: {layout: 'vertical'}}"
     group="viewcomps"
+    tag="a-form"
   >
     <draggable-form-item
       v-for="field in draggableFields"
       :schema="field.schema"
       :key="field.id"
       :id="field.id"
-      :actived="activeFieldId === field.id"
+      :actived="selectFieldId === field.id"
       @click="setActiveId(field.id)"
     ></draggable-form-item>
   </draggable>
 </template>
 
 <script>
+import { schemaParse } from "@/plugins/renderer/parser";
 import draggable from "vuedraggable";
 import DraggableFormItem from "./DraggableFormItem.vue";
-import { COMMIT_TYPE } from "../../../store";
+import { fromPairs } from "lodash-es";
 
 export default {
   name: "PreviewArea",
+  props: {
+    schema: Object,
+  },
+  model: {
+    prop: "schema",
+    event: "schema-change",
+  },
   data() {
     return {
-      activeFieldId: "",
+      selectFieldId: "",
     };
   },
   computed: {
     draggableFields: {
       get() {
-        return this.$store.state.draggableFields;
+        return schemaParse(this.schema);
       },
       set(value) {
-        return this.$store.commit(COMMIT_TYPE.draggableFields_update, value);
+        return this.$emit("schemaChange", {
+          type: "object",
+          properties: fromPairs(value.map((field) => [field.id, field.schema])),
+        });
       },
     },
   },
   methods: {
     setActiveId(fieldID) {
-      this.activeFieldId = fieldID;
-      this.$emit(
-        "selectActivedField",
-        this.draggableFields.find((field) => field.id === fieldID)
-      );
+      this.selectFieldId = fieldID;
+      this.$emit("selectFieldChange", fieldID);
     },
   },
   components: {
