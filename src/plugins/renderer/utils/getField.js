@@ -31,6 +31,11 @@ export function getFieldProps(obj) {
     };
   }
 
+  if (obj.type === "number") {
+    props.minimum = obj.minimum;
+    props.maximum = obj.maximum;
+  }
+
   return props;
 }
 
