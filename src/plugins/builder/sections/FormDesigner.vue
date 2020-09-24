@@ -4,10 +4,14 @@
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
     <a-col flex="auto" class="content">
-      <preview-area :schema="schema" @schema-change="$emit('schema-change', $event)"></preview-area>
+      <preview-area
+        :schema="schema"
+        @schema-change="$emit('schema-change', $event)"
+        @selectFieldChange="selectFieldId = $event"
+      ></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
-      <editor-panel></editor-panel>
+      <editor-panel :activedFieldId="selectFieldId"></editor-panel>
     </a-col>
   </a-row>
 </template>
@@ -30,6 +34,7 @@ export default {
   data() {
     return {
       basicComps: basicComps,
+      selectFieldId: null,
       advancedComps: advancedComps,
     };
   },

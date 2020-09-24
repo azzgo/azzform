@@ -3,30 +3,8 @@
     <a-tabs :animated="false">
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
         <div class="tab-panel">
-          <div v-if="activedField">
-            <a-form-item label="ID">
-              <a-input :value="activedField.id" readonly />
-            </a-form-item>
-            <a-form-item label="标题">
-              <a-input v-model="activedField.schema.title" />
-            </a-form-item>
-            <div v-if="activedField.schema['ui:options']">
-              <a-form-item
-                label="提示"
-                v-if="activedField.schema['ui:options']['placeholder'] != null"
-              >
-                <a-textarea v-model="activedField.schema['ui:options']['placeholder']" />
-              </a-form-item>
-              <a-form-item
-                label="允许删除"
-                v-if="activedField.schema['ui:options']['allowClear'] != null"
-              >
-                <a-checkbox v-model="activedField.schema['ui:options']['allowClear']" />
-              </a-form-item>
-            </div>
-            <a-form-item label="栅格">
-              <a-slider v-model="activedField.schema['ui:column']" :min="1" :max="24" />
-            </a-form-item>
+          <div v-if="activedFieldId">
+            <form-renderer :schema="settingSchema" />
           </div>
           <div v-else>请选择一个表单元素</div>
         </div>
@@ -40,7 +18,9 @@
   </div>
 </template>
 <script>
-import { Tabs, Form, Checkbox, Slider, Input } from "ant-design-vue";
+import { Tabs } from "ant-design-vue";
+import Renderer from "@/plugins/renderer/components/renderer.vue";
+import { commonSettings } from "@/plugins/renderer/contants/settings";
 
 const TAB_KEYS = {
   fieldProperties: "字段属性",
@@ -49,20 +29,17 @@ const TAB_KEYS = {
 
 export default {
   props: {
-    activedField: null,
+    activedFieldId: null,
   },
   components: {
     ["a-tabs"]: Tabs,
     ["a-tab-pane"]: Tabs.TabPane,
-    ["a-form-item"]: Form.Item,
-    ["a-checkbox"]: Checkbox,
-    ["a-slider"]: Slider,
-    ["a-input"]: Input,
-    ["a-textarea"]: Input.TextArea,
+    [Renderer.name]: Renderer
   },
   data() {
     return {
       tabKeys: TAB_KEYS,
+      settingSchema: commonSettings
     };
   },
 };
