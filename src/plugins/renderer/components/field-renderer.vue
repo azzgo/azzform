@@ -1,5 +1,5 @@
 <script>
-import { Col } from 'ant-design-vue';
+import { Col } from "ant-design-vue";
 import { widgets } from "../widgets";
 export default {
   name: "field-renderer",
@@ -9,12 +9,12 @@ export default {
   },
   components: {
     ...widgets,
-    ['a-col']: Col
+    ["a-col"]: Col,
   },
   render(h) {
     return h(
       "a-col",
-      { props: { span: this.field.column }, class: { 'col-item': true } },
+      { props: { span: this.field.column }, class: { "col-item": true } },
       [
         h(
           "a-form-item",

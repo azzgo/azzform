@@ -2,21 +2,43 @@
 import { widgets } from "../widgets";
 import { schemaParse } from "../utils/parser";
 import FieldRenderer from "./field-renderer.vue";
-import { Form, Modal } from 'ant-design-vue'
+import { Form, Modal } from "ant-design-vue";
+import { resolveFormData } from "../utils/resolve";
 
 export default {
   name: "form-renderer",
+  model: {
+    prop: "formData",
+    event: "onChange",
+  },
   props: {
-    schema: Object,
+    schema: {
+      type: Object,
+      default: () => ({}),
+    },
+    formData: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  mounted() {
+    this.$emit("onChange", this._formData);
+  },
+  computed: {
+    fields() {
+      return schemaParse(this.schema);
+    },
+    _formData() {
+      return resolveFormData(this.schema, this.formData);
+    },
   },
   components: {
     ...widgets,
     [FieldRenderer.name]: FieldRenderer,
-    ['a-form']: Form,
-    ['a-modal']: Modal,
+    ["a-form"]: Form,
+    ["a-modal"]: Modal,
   },
   render(h) {
-    const fields = schemaParse(this.schema);
     return h(
       "a-form",
       {
@@ -24,7 +46,7 @@ export default {
           layout: "vertical",
         },
       },
-      fields.map((field) => {
+      this.fields.map((field) => {
         return h("field-renderer", {
           props: { field },
         });

@@ -1,4 +1,4 @@
-import FormRenderer from "./components//renderer.vue";
+import FormRenderer from "./components/renderer.vue";
 
 export default {
   install(Vue) {
