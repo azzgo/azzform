@@ -18,13 +18,16 @@ export default {
     draggable,
     [FieldRenderer.name]: FieldRenderer,
   },
-  render(h) {
+  render() {
     const field = fieldParse(this.id, this.fieldSchema);
-    return h("field-renderer", {
-      props: { field, readOnly: true },
-      nativeOn: { click: this.handleClick },
-      class: { active: this.actived, "form-item": true },
-    });
+    return (
+      <field-renderer
+        field={field}
+        readOnly={true}
+        nativeOnClick={this.handleClick}
+        class={{ active: this.actived, "form-item": true }}
+      ></field-renderer>
+    );
   },
   methods: {
     handleClick() {

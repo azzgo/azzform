@@ -11,27 +11,16 @@ export default {
     ...widgets,
     ["a-col"]: Col,
   },
-  render(h) {
-    return h(
-      "a-col",
-      { props: { span: this.field.column }, class: { "col-item": true } },
-      [
-        h(
-          "a-form-item",
-          {
-            props: {
-              label: this.field.title,
-            },
-          },
-          [
-            h(
-              this.field.widget,
-              { props: { ...this.field.props, readOnly: this.readOnly } },
-              this.field.children
-            ),
-          ]
-        ),
-      ]
+  render() {
+    const Field = this.field.widget;
+    return (
+      <a-col span={this.field.column} class="col-item">
+        <a-form-item label={this.field.title}>
+          <Field props={{ ...this.field.props, readOnly: this.readOnly }}>
+            {this.field.children}
+          </Field>
+        </a-form-item>
+      </a-col>
     );
   },
 };

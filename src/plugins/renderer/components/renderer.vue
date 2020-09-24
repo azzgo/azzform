@@ -38,19 +38,13 @@ export default {
     ["a-form"]: Form,
     ["a-modal"]: Modal,
   },
-  render(h) {
-    return h(
-      "a-form",
-      {
-        props: {
-          layout: "vertical",
-        },
-      },
-      this.fields.map((field) => {
-        return h("field-renderer", {
-          props: { field },
-        });
-      })
+  render() {
+    return (
+      <a-form layout="vertical">
+        {this.fields.map((field) => {
+          return <field-renderer field={field} />;
+        })}
+      </a-form>
     );
   },
 };
