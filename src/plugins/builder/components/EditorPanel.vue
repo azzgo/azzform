@@ -4,7 +4,11 @@
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
         <div class="tab-panel">
           <div v-if="activedFieldId">
-            <form-renderer :schema="settingSchema" />
+            <form-renderer
+              :schema="settingSchema"
+              :formData="settingFormData"
+              @onChange="handleSettingFormDataChange"
+            />
           </div>
           <div v-else>请选择一个表单元素</div>
         </div>
@@ -34,13 +38,20 @@ export default {
   components: {
     ["a-tabs"]: Tabs,
     ["a-tab-pane"]: Tabs.TabPane,
-    [Renderer.name]: Renderer
+    [Renderer.name]: Renderer,
   },
   data() {
     return {
       tabKeys: TAB_KEYS,
-      settingSchema: commonSettings
+      settingSchema: commonSettings,
+      settingFormData: {},
     };
+  },
+  methods: {
+    handleSettingFormDataChange(val) {
+      console.log(val);
+      this.settingFormData = val;
+    },
   },
 };
 </script>
