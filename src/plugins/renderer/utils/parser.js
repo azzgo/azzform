@@ -1,5 +1,4 @@
-import ui from "../contants/ui";
-import { getFieldColumn, getFieldWidget } from "../utils/getField";
+import { getFieldColumn, getFieldProps, getFieldWidget } from "../utils/getField";
 
 export function schemaParse(schema) {
   if (schema.type === "object" && schema.properties) {
@@ -20,10 +19,8 @@ export function fieldParse(id, fieldSchema) {
     widget: getFieldWidget(fieldSchema),
     title: fieldSchema.title,
     column: getFieldColumn(fieldSchema),
-    props: {
-      ...(fieldSchema[ui.options] || {}),
-    },
     children: schemaParse(fieldSchema),
+    props: getFieldProps(fieldSchema)
   };
   return fieldObj;
 }
