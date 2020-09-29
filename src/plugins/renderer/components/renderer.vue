@@ -18,7 +18,7 @@ export default {
     },
     formData: {
       type: Object,
-      default: () => ({}),
+      default: null,
     },
   },
   mounted() {

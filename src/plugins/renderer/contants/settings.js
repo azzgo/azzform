@@ -1,5 +1,6 @@
 import ui from "./ui";
 import InputConfig from "../widgets/input/config";
+import SliderConfig from '../widgets/range/config'
 
 export const commonSettings = {
   type: "object",
@@ -14,18 +15,13 @@ export const commonSettings = {
       title: "标题",
       [ui.widget]: InputConfig.schema[ui.widget],
     },
-    default: {
-      type: "string",
-      title: "默认值",
-      [ui.widget]: InputConfig.schema[ui.widget],
-    },
     column: {
-      type: "integer",
+      type: "number",
       title: "栅格",
       default: 24,
       minimum: 1,
       maximum: 24,
-      [ui.widget]: InputConfig.schema[ui.widget],
+      [ui.widget]: SliderConfig.schema[ui.widget],
       [ui.options]: {
         step: 1,
       },
