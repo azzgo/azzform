@@ -3,10 +3,10 @@
     <a-tabs :animated="false">
       <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
         <div class="tab-panel">
-          <div v-if="activedFieldId">
+          <div v-if="activedField">
             <form-renderer
               :schema="settingSchema"
-              :formData="settingFormData"
+              :formData="activedField"
               @formDataChange="handleSettingFormDataChange"
             />
           </div>
@@ -33,7 +33,7 @@ const TAB_KEYS = {
 
 export default {
   props: {
-    activedFieldId: null,
+    activedField: Object,
   },
   components: {
     ["a-tabs"]: Tabs,
@@ -44,13 +44,11 @@ export default {
     return {
       tabKeys: TAB_KEYS,
       settingSchema: commonSettings,
-      settingFormData: {},
     };
   },
   methods: {
     handleSettingFormDataChange(val) {
-      console.log(val);
-      this.settingFormData = val;
+      this.$emit("settingChange", val);
     },
   },
 };

@@ -13,7 +13,10 @@ export default {
       default: 1,
     },
     readOnly: Boolean,
-    value: null,
+    value: {
+      type: Number,
+      default: 0,
+    },
   },
   render() {
     return (
@@ -22,8 +25,8 @@ export default {
         max={this.maximum}
         step={this.step}
         disabled={this.readOnly}
-        value={this.value}
-        onChange={(val) => this.$emit('change', val)}
+        value={this.value || 0}
+        onChange={(val) => this.$emit("change", val)}
       />
     );
   },

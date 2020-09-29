@@ -11,6 +11,7 @@ export default {
     [ui.options]: {
       step: 1,
     },
+    default: 200,
     minimum: 0,
     maximum: 200,
   },

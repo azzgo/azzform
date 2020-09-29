@@ -11,7 +11,10 @@
       ></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
-      <editor-panel :activedFieldId="selectFieldId"></editor-panel>
+      <editor-panel
+        :activedField="activedField"
+        @settingChange="handleSettingChange"
+      ></editor-panel>
     </a-col>
   </a-row>
 </template>
@@ -31,12 +34,22 @@ export default {
     prop: "schema",
     event: "schema-change",
   },
+  computed: {
+    activedField() {
+      return this.schema?.properties?.[this.selectFieldId];
+    },
+  },
   data() {
     return {
       basicComps: basicComps,
       selectFieldId: null,
       advancedComps: advancedComps,
     };
+  },
+  methods: {
+    handleSettingChange(val) {
+      this.$set(this.schema?.properties?.[this.selectFieldId], val);
+    },
   },
   components: {
     Toolbar,
