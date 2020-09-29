@@ -48,7 +48,7 @@ export default {
   },
   methods: {
     handleSettingChange(val) {
-      this.$set(this.schema?.properties?.[this.selectFieldId], val);
+      this.schema.properties[this.selectFieldId] = val;
     },
   },
   components: {

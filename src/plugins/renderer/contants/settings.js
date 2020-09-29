@@ -5,17 +5,12 @@ import SliderConfig from '../widgets/range/config'
 export const commonSettings = {
   type: "object",
   properties: {
-    fieldId: {
-      type: "string",
-      title: "字段ID",
-      [ui.widget]: InputConfig.schema[ui.widget],
-    },
     title: {
       type: "string",
       title: "标题",
       [ui.widget]: InputConfig.schema[ui.widget],
     },
-    column: {
+    'ui:column': {
       type: "number",
       title: "栅格",
       default: 24,
