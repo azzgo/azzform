@@ -7,7 +7,7 @@
             <form-renderer
               :schema="settingSchema"
               :formData="settingFormData"
-              @onChange="handleSettingFormDataChange"
+              @formDataChange="handleSettingFormDataChange"
             />
           </div>
           <div v-else>请选择一个表单元素</div>

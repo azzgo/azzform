@@ -9,7 +9,7 @@ export default {
   name: "form-renderer",
   model: {
     prop: "formData",
-    event: "onChange",
+    event: "formDataChange",
   },
   props: {
     schema: {
@@ -22,7 +22,7 @@ export default {
     },
   },
   mounted() {
-    this.$emit("onChange", this._formData);
+    this.$emit("formDataChange", this._formData);
   },
   computed: {
     fields() {
@@ -38,11 +38,28 @@ export default {
     ["a-form"]: Form,
     ["a-modal"]: Modal,
   },
+  methods: {
+    handleFormChange(val) {
+      this.$emit("formDataChange", val);
+    },
+  },
   render() {
     return (
       <a-form layout="vertical">
         {this.fields.map((field) => {
-          return <field-renderer field={field} />;
+          return (
+            <field-renderer
+              key={field.fieldId}
+              field={field}
+              value={this._formData[field.fieldId]}
+              onChange={(val) =>
+                this.handleFormChange({
+                  ...this._formData,
+                  [field.fieldId]: val,
+                })
+              }
+            />
+          );
         })}
       </a-form>
     );

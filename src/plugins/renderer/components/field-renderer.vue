@@ -6,6 +6,7 @@ export default {
   props: {
     field: Object,
     readOnly: Boolean,
+    value: { default: null },
   },
   components: {
     ...widgets,
@@ -16,7 +17,14 @@ export default {
     return (
       <a-col span={this.field.column} class="col-item">
         <a-form-item label={this.field.title}>
-          <Field props={{ ...this.field.props, readOnly: this.readOnly }}>
+          <Field
+            props={{
+              ...this.field.props,
+              readOnly: this.readOnly,
+              value: this.value,
+            }}
+            onChange={(val) => this.$emit("change", val)}
+          >
             {this.field.children}
           </Field>
         </a-form-item>
