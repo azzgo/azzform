@@ -1,9 +1,7 @@
 <template>
   <header class="header">
     <a-row type="flex" align="middle">
-      <a-col class="nav-back">
-        <a-icon type="left" />返回
-      </a-col>
+      <a-col class="nav-back"> </a-col>
       <a-col class="center-menu" flex="auto">
         <div class="item">表单设计</div>
       </a-col>
@@ -21,14 +19,14 @@
       title="预览"
       placement="bottom"
     >
-      <form-renderer :schema="schema"></form-renderer>
+      <form-renderer :schema="schema" v-model="formData"></form-renderer>
     </a-drawer>
   </header>
 </template>
 
 <script>
 import Renderer from "@/plugins/renderer/components/renderer.vue";
-import { Row, Col, Icon, Button, Space, Drawer } from 'ant-design-vue'
+import { Row, Col, Button, Space, Drawer } from "ant-design-vue";
 
 export default {
   name: "preview-header-section",
@@ -37,16 +35,16 @@ export default {
   },
   components: {
     [Renderer.name]: Renderer,
-    ['a-row']: Row,
-    ['a-col']: Col,
-    ['a-icon']: Icon,
-    ['a-button']: Button,
-    ['a-space']: Space,
-    ['a-drawer']: Drawer,
+    ["a-row"]: Row,
+    ["a-col"]: Col,
+    ["a-button"]: Button,
+    ["a-space"]: Space,
+    ["a-drawer"]: Drawer,
   },
   data() {
     return {
       previewDrawerVisible: false,
+      formData: {},
     };
   },
   methods: {
