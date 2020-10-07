@@ -1,5 +1,10 @@
 <template>
-  <draggable v-model="draggableFields" class="prewview" group="viewcomps" tag="a-form">
+  <draggable
+    v-model="draggableFields"
+    class="prewview"
+    group="viewcomps"
+    tag="a-form"
+  >
     <draggable-form-item
       v-for="field in draggableFields"
       :fieldSchema="field.schema"
@@ -34,16 +39,14 @@ export default {
     draggableFields: {
       get() {
         // 需要拆分下
-        return this.schema && this.schema.properties
-          ? Object.keys(this.schema.properties).map((propName) => {
-              const propValue = this.schema.properties[propName] || {};
+        return Object.keys(this.schema?.properties || []).map((propName) => {
+          const propValue = this.schema.properties[propName] || {};
 
-              return {
-                fieldId: propName,
-                schema: propValue,
-              };
-            })
-          : [];
+          return {
+            fieldId: propName,
+            schema: propValue,
+          };
+        });
       },
       set(value) {
         return this.$emit("schema-change", {

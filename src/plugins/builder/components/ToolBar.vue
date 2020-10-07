@@ -49,9 +49,6 @@ export default {
         schema: cloneDeep(item.schema),
       };
     },
-    log($event) {
-      console.log($event);
-    },
   },
   components: {
     draggable,
