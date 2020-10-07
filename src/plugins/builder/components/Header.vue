@@ -19,7 +19,7 @@
       title="预览"
       placement="bottom"
     >
-      <form-renderer :schema="schema" v-model="formData"></form-renderer>
+      <form-renderer :schema="schema"></form-renderer>
     </a-drawer>
   </header>
 </template>
@@ -27,12 +27,10 @@
 <script>
 import Renderer from "@/plugins/renderer/components/renderer.vue";
 import { Row, Col, Button, Space, Drawer } from "ant-design-vue";
+import { state } from "../store";
 
 export default {
   name: "preview-header-section",
-  props: {
-    schema: Object,
-  },
   components: {
     [Renderer.name]: Renderer,
     ["a-row"]: Row,
@@ -44,8 +42,12 @@ export default {
   data() {
     return {
       previewDrawerVisible: false,
-      formData: {},
     };
+  },
+  computed: {
+    schema() {
+      return state.schema;
+    },
   },
   methods: {
     toPreview() {

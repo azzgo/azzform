@@ -20,15 +20,12 @@
 import draggable from "vuedraggable";
 import DraggableFormItem from "./DraggableFormItem.vue";
 import { fromPairs } from "lodash-es";
+import { state } from "../store";
 
 export default {
   name: "PreviewArea",
   props: {
     schema: Object,
-  },
-  model: {
-    prop: "schema",
-    event: "schema-change",
   },
   data() {
     return {
@@ -39,8 +36,8 @@ export default {
     draggableFields: {
       get() {
         // 需要拆分下
-        return Object.keys(this.schema?.properties || []).map((propName) => {
-          const propValue = this.schema.properties[propName] || {};
+        return Object.keys(state.schema?.properties || []).map((propName) => {
+          const propValue = state.schema.properties[propName] || {};
 
           return {
             fieldId: propName,
@@ -49,12 +46,12 @@ export default {
         });
       },
       set(value) {
-        return this.$emit("schema-change", {
+        state.schema = {
           type: "object",
           properties: fromPairs(
             value.map((field) => [field.fieldId, field.schema])
           ),
-        });
+        };
       },
     },
   },

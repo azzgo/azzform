@@ -1,8 +1,8 @@
 <template>
   <div>
-    <edit-header :schema="schema" />
+    <edit-header />
     <div class="main-sesion">
-      <form-designer v-model="schema" />
+      <form-designer />
     </div>
   </div>
 </template>
@@ -13,9 +13,7 @@ import FormDesigner from "./sections/FormDesigner.vue";
 
 export default {
   data() {
-    return {
-      schema: {},
-    }
+    return {};
   },
   components: {
     EditHeader,

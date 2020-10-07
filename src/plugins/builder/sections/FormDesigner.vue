@@ -4,11 +4,7 @@
       <toolbar :basicComps="basicComps" :advanceComps="advancedComps" />
     </a-col>
     <a-col flex="auto" class="content">
-      <preview-area
-        :schema="schema"
-        @schema-change="$emit('schema-change', $event)"
-        @selectFieldChange="selectFieldId = $event"
-      ></preview-area>
+      <preview-area @selectFieldChange="selectFieldId = $event"></preview-area>
     </a-col>
     <a-col flex="300px" class="sider">
       <editor-panel
@@ -25,18 +21,12 @@ import PreviewArea from "../components/PreviewArea.vue";
 import EditorPanel from "../components/EditorPanel.vue";
 import { basicComps, advancedComps } from "../constants/comps";
 import { Row, Col } from "ant-design-vue";
+import { state } from "../store";
 
 export default {
-  props: {
-    schema: Object,
-  },
-  model: {
-    prop: "schema",
-    event: "schema-change",
-  },
   computed: {
     activedField() {
-      return this.schema?.properties?.[this.selectFieldId];
+      return state.schema?.properties?.[this.selectFieldId];
     },
   },
   data() {
@@ -48,7 +38,7 @@ export default {
   },
   methods: {
     handleSettingChange(val) {
-      this.schema.properties[this.selectFieldId] = val;
+      state.schema.properties[this.selectFieldId] = val;
     },
   },
   components: {
