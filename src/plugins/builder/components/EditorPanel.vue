@@ -1,30 +1,6 @@
-<template>
-  <div class="editor-panel">
-    <a-tabs :animated="false">
-      <a-tab-pane :key="tabKeys.fieldProperties" :tab="tabKeys.fieldProperties">
-        <div class="tab-panel">
-          <div v-if="activedField">
-            <form-renderer
-              :schema="settingSchema"
-              :formData="activedField"
-              @formDataChange="handleSettingFormDataChange"
-            />
-          </div>
-          <div v-else>请选择一个表单元素</div>
-        </div>
-      </a-tab-pane>
-      <a-tab-pane :key="tabKeys.formProperties" :tab="tabKeys.formProperties">
-        <div class="tab-panel">
-          <span></span>
-        </div>
-      </a-tab-pane>
-    </a-tabs>
-  </div>
-</template>
 <script>
 import { Tabs } from "ant-design-vue";
-import Renderer from "@/plugins/renderer/components/renderer.vue";
-import { commonSettings } from "@/plugins/renderer/contants/settings";
+import Setting from "@/plugins/renderer/widgets/description/setting.vue";
 
 const TAB_KEYS = {
   fieldProperties: "字段属性",
@@ -35,21 +11,37 @@ export default {
   props: {
     activedField: Object,
   },
-  components: {
-    ["a-tabs"]: Tabs,
-    ["a-tab-pane"]: Tabs.TabPane,
-    [Renderer.name]: Renderer,
-  },
   data() {
-    return {
-      tabKeys: TAB_KEYS,
-      settingSchema: commonSettings,
-    };
+    return {};
   },
   methods: {
     handleSettingFormDataChange(val) {
       this.$emit("settingChange", val);
     },
+  },
+  render() {
+    return (
+      <div class="edit-panel">
+        <Tabs animated={false}>
+          <Tabs.TabPane
+            key={TAB_KEYS.fieldProperties}
+            tab={TAB_KEYS.fieldProperties}
+          >
+            <div class="tab-panel">
+              {this.activedField ? <Setting formData={this.activedField} onFormDataChange={this.handleSettingFormDataChange} /> : <div />}
+            </div>
+          </Tabs.TabPane>
+          <Tabs.TabPane
+            key={TAB_KEYS.formProperties}
+            tab={TAB_KEYS.formProperties}
+          >
+            <div class="tab-panel">
+              <span></span>
+            </div>
+          </Tabs.TabPane>
+        </Tabs>
+      </div>
+    );
   },
 };
 </script>
