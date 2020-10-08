@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["packages/*/src"]
     }
-  }
+  },
+  "exclude": ["node_modules", "dist", "**/*.spec*"]
 }

@@ -1,0 +1,7 @@
+.eslintrc.js
+vue.config.js
+babel.config.js
+**/__tests__/*.js
+**/*.spec.js
+**/*.test.js
+

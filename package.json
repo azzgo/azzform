@@ -1,39 +1,14 @@
 {
-  "name": "form-apass-designer-poc",
-  "version": "0.1.0",
+  "name": "root",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "ant-design-vue": "^1.6.5",
-    "core-js": "^3.6.5",
-    "lodash-es": "^4.17.15",
-    "nanoid": "^3.1.12",
-    "vue": "^2.6.11",
-    "vue-router": "^3.4.3",
-    "vuedraggable": "^2.24.1"
+    "bootstrap": "lerna  bootstrap --hoist",
+    "serve": "lerna run serve --parallel"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/test-utils": "^1.0.3",
-    "babel-eslint": "^10.1.0",
-    "babel-plugin-import": "^1.13.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "less": "^3.12.2",
-    "less-loader": "^7.0.1",
-    "vue-template-compiler": "^2.6.11"
+    "lerna": "^4.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  "dependencies": {
+    "@ant-design/icons-vue": "^6.0.1"
+  }
 }
