@@ -16,7 +16,7 @@ export function parseSchemaIntoFields(
 
 export function indexedAllFieldSchemaPath(
   schema: Record<string, any>,
-  pathPrefix: string = '',
+  pathPrefix: string = ""
 ): Record<string, string> {
   const indexedFieldSchemaPath: Record<string, string> = {};
 
@@ -25,7 +25,9 @@ export function indexedAllFieldSchemaPath(
       const fieldSchema = schema.properties[propName];
       if (checkIsWidget(fieldSchema)) {
         if (pathPrefix.length > 0) {
-          indexedFieldSchemaPath[propName] = `${pathPrefix}.properties.${propName}`;
+          indexedFieldSchemaPath[
+            propName
+          ] = `${pathPrefix}.properties.${propName}`;
         } else {
           indexedFieldSchemaPath[propName] = `properties.${propName}`;
         }
