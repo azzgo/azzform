@@ -4,11 +4,11 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ["plugin:vue/essential", "eslint:recommended"],
-  parserOptions: {
-    parser: "babel-eslint",
+  extends: ["plugin:vue/essential", "eslint:recommended", "@vue/typescript"],
+  rules: {
+    "no-undef": "off",
+    "vue/no-v-model-argument": "off",
   },
-  rules: {},
   overrides: [
     {
       files: [
@@ -20,4 +20,7 @@ module.exports = {
       },
     },
   ],
+  parserOptions: {
+    parser: "@typescript-eslint/parser",
+  },
 };
