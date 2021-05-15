@@ -29,7 +29,7 @@ export default defineComponent({
         fieldSchema={this.fieldSchema}
         readOnly={true}
         onClick={this.handleClick}
-        class={{ active: this.actived, "form-item": true }}
+        class={{ "preview-field-active": this.actived, "form-item": true }}
       ></field-renderer>
     );
   },
@@ -42,17 +42,15 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-.active {
-  border: 1px #ccc dashed !important;
-  min-height: 40px;
-}
-
 .form-item {
   margin-bottom: 0;
+  background-color: white;
 
-  /deep/ input:read-only,
-  /deep/ textarea:read-only {
+  /deep/ input,
+  /deep/ textarea {
     cursor: pointer;
+    pointer-events: none;
+    resize: none;
   }
 }
 </style>

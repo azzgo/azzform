@@ -77,11 +77,20 @@ export default defineComponent({
     border: 1px red dashed !important;
     width: 100% !important;
     max-width: none;
-    min-height: 40px;
+    min-height: 32px;
 
     .item {
       display: none;
     }
+
+    > * {
+      display: none !important;
+    }
   }
+}
+
+.preview-field-active {
+  border: 1px #ccc dashed !important;
+  min-height: 40px;
 }
 </style>
