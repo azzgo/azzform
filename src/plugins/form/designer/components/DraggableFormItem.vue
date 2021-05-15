@@ -29,6 +29,7 @@ export default defineComponent({
         fieldSchema={this.fieldSchema}
         readOnly={true}
         onClick={this.handleClick}
+        renderWidgetKey="Preview"
         class={{ "preview-field-active": this.actived, "form-item": true }}
       ></field-renderer>
     );

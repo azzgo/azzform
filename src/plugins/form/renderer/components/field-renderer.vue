@@ -10,6 +10,10 @@ export default defineComponent({
     fieldSchema: { type: Object as PropType<IWidgetSchema>, require: true },
     readOnly: Boolean,
     value: { default: null },
+    renderWidgetKey: {
+      type: String as PropType<"Widget" | "Preview">,
+      default: "Widget",
+    },
   },
   emits: ["change"],
   setup() {
@@ -20,7 +24,16 @@ export default defineComponent({
     };
   },
   render() {
-    const Field: any = this.widgetsMapping[this.fieldSchema!.widget as string].Widget;
+    const Field: any = (this.widgetsMapping[
+      this.fieldSchema!.widget as string
+    ] as any)[this.renderWidgetKey];
+    if (!Field) {
+      return (
+        <a-col span={24} class="col-item">
+          Oh Oh the Widget render went wrong~
+        </a-col>
+      );
+    }
     return (
       <a-col span={this.fieldSchema?.column || 24} class="col-item">
         <a-form-item label={this.fieldSchema?.title}>
