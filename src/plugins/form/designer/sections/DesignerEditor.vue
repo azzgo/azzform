@@ -3,7 +3,7 @@
     <a-col flex="300px" class="sider">
       <SelectorPanel
         :basicComps="compsConfig.basicComps"
-        :advanceComps="compsConfig.advancedComps"
+        :advancedComps="compsConfig.advancedComps"
       />
     </a-col>
     <a-col flex="auto" class="content">

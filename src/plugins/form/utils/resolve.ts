@@ -63,7 +63,7 @@ export function resolveSelectPanelCompGroupConfig(
   widgetsMapping: Record<string, IDesignerWidgetValueConfig>
 ) {
   const basicComps: IWidgetConfig[] = [];
-  const advanceComps: IWidgetConfig[] = [];
+  const advancedComps: IWidgetConfig[] = [];
 
   Object.keys(widgetsMapping).forEach((key) => {
     const widgetConfig = widgetsMapping[key].config;
@@ -72,9 +72,9 @@ export function resolveSelectPanelCompGroupConfig(
     }
 
     if (widgetConfig.category === "advance") {
-      advanceComps.push(widgetConfig);
+      advancedComps.push(widgetConfig);
     }
   });
 
-  return { basicComps, advanceComps };
+  return { basicComps, advancedComps };
 }

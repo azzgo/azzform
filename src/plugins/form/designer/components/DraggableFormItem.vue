@@ -46,8 +46,8 @@ export default defineComponent({
   margin-bottom: 0;
   background-color: white;
 
-  /deep/ input,
-  /deep/ textarea {
+  :deep(input),
+  :deep(textarea){
     cursor: pointer;
     pointer-events: none;
     resize: none;

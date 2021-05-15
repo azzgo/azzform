@@ -36,9 +36,9 @@ import { computed, defineComponent } from "@vue/runtime-core";
 export default defineComponent({
   props: {
     basicComps: Array,
-    advanceComps: Array,
+    advancedComps: Array,
   },
-  setup({ basicComps, advanceComps }) {
+  setup({ basicComps, advancedComps }) {
     const tools = computed(() => {
       return [
         {
@@ -47,7 +47,7 @@ export default defineComponent({
         },
         {
           name: "高级组件",
-          comps: advanceComps ?? [],
+          comps: advancedComps ?? [],
         },
       ];
     });

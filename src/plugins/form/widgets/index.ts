@@ -1,10 +1,10 @@
-import * as description from "./description";
-import * as input from "./input";
-import * as range from "./range";
 import { IWidgetConfig } from "./type";
 import { Component } from "@vue/runtime-core";
+import requireContext from 'require-context.macro'
 
-const defaultWidgetList = [description, input, range];
+const contexts = requireContext('.', true, /[\w-]+\/index.ts$/)
+
+const defaultWidgetList = contexts.keys().map(key => contexts(key));
 
 export interface IRenderWidgetValueConfig {
   config: IWidgetConfig;
