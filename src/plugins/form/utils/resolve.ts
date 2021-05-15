@@ -1,5 +1,9 @@
 import { jsonClone } from "./common";
-import { IWidgetSchema } from "../widgets/type";
+import { IWidgetConfig, IWidgetSchema } from "../widgets/type";
+import {
+  IDesignerWidgetValueConfig,
+  IRenderWidgetValueConfig,
+} from "../widgets";
 
 export function resolveDefaultValue(
   schema: IWidgetSchema<Record<string, any>>
@@ -53,4 +57,24 @@ export function resolveFormData(
   }
 
   return _data;
+}
+
+export function resolveSelectPanelCompGroupConfig(
+  widgetsMapping: Record<string, IDesignerWidgetValueConfig>
+) {
+  const basicComps: IWidgetConfig[] = [];
+  const advanceComps: IWidgetConfig[] = [];
+
+  Object.keys(widgetsMapping).forEach((key) => {
+    const widgetConfig = widgetsMapping[key].config;
+    if (widgetConfig.category === "basic") {
+      basicComps.push(widgetConfig);
+    }
+
+    if (widgetConfig.category === "advance") {
+      advanceComps.push(widgetConfig);
+    }
+  });
+
+  return { basicComps, advanceComps };
 }

@@ -34,8 +34,7 @@ export default defineComponent({
     const Setting: any = computed(() => {
       const activedFieldPath =
         indexedFieldSchemaPath.value[state.designer.selectFieldName];
-      const widgetName = get(schema.value, activedFieldPath)?.widget;
-      console.log(widgetName)
+      const widgetName = get(schema.value, activedFieldPath, {}).widget;
       return widgetsMapping[widgetName!]?.Setting;
     });
 

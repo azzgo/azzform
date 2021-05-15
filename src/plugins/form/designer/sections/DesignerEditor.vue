@@ -1,7 +1,10 @@
 <template>
   <a-row class="container" type="flex">
     <a-col flex="300px" class="sider">
-      <SelectorPanel :basicComps="basicComps" :advanceComps="advancedComps" />
+      <SelectorPanel
+        :basicComps="compsConfig.basicComps"
+        :advanceComps="compsConfig.advancedComps"
+      />
     </a-col>
     <a-col flex="auto" class="content">
       <PreviewPanel />
@@ -16,19 +19,20 @@
 import SelectorPanel from "../components/SelectorPanel.vue";
 import PreviewPanel from "../components/PreviewPanel.vue";
 import ConfigPanel from "../components/ConfigPanel.vue";
-import { basicComps, advancedComps } from "../../contants/comps";
-import {
-  defineComponent,
-} from "@vue/runtime-core";
+import { computed, defineComponent, inject } from "@vue/runtime-core";
+import { WIDGETS_MAPPING } from "../../contants/provideNames";
+import { resolveSelectPanelCompGroupConfig } from "../../utils/resolve";
 
 export default defineComponent({
   name: "design-editor",
-  data() {
-    return {
-      // TODO: 后面需要暴露出去可配置
-      basicComps: basicComps,
-      advancedComps: advancedComps,
-    };
+  setup() {
+    const widgetsMapping = inject(WIDGETS_MAPPING, {});
+
+    const compsConfig = computed(() =>
+      resolveSelectPanelCompGroupConfig(widgetsMapping)
+    );
+
+    return { compsConfig };
   },
   components: {
     SelectorPanel,

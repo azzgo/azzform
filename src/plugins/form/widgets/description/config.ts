@@ -1,13 +1,13 @@
-import { IWidgetConfig } from "../type";
+import { defineWidget } from "../utils";
 
-export default {
-  name: "description",
+export default defineWidget<{ placeholder: string }>({
   text: "描述",
+  category: "basic",
   schema: {
     title: "描述",
     type: "string",
     placeholder: "这是一段无用的描述",
-    widget: "c-description",
+    widget: "description",
     column: 24,
   },
-} as IWidgetConfig<{ placeholder: string }>;
+});

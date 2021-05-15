@@ -1,10 +1,10 @@
-import { IWidgetConfig } from "../type";
+import { defineWidget } from "../utils";
 
-const widgetName = "c-input";
+const widgetName = "input";
 
-export default {
-  name: "input",
+export default defineWidget({
   text: "单行文本",
+  category: "basic",
   schema: {
     title: "单行文本",
     type: "string",
@@ -14,8 +14,4 @@ export default {
     maxLength: 200,
     minLength: 0,
   },
-} as IWidgetConfig<{
-  placeholder: string;
-  maxLength: number;
-  minLength: number;
-}>;
+});

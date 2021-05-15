@@ -20,7 +20,7 @@ export interface IDesignerWidgetValueConfig {
 export const widgetsRenderDefaultMapping = defaultWidgetList.reduce<
   Record<string, IRenderWidgetValueConfig>
 >((prev, cur) => {
-  prev[cur.config.schema.widget!] = {
+  prev[cur.config.schema.widget] = {
     config: cur.config,
     Widget: cur.Widget,
   };
@@ -30,7 +30,7 @@ export const widgetsRenderDefaultMapping = defaultWidgetList.reduce<
 export const widgetsDesignerDefaultMapping = defaultWidgetList.reduce<
   Record<string, IDesignerWidgetValueConfig>
 >((prev, cur) => {
-  prev[cur.config.schema.widget!] = {
+  prev[cur.config.schema.widget] = {
     config: cur.config,
     Widget: cur.Widget,
     Setting: cur.Setting,

@@ -1,9 +1,8 @@
 <script lang="tsx">
 import { defineComponent } from "@vue/runtime-core";
-import config from "./config";
 
 export default defineComponent({
-  name: config.schema.widget,
+  name: 'c-range',
   emits: ["change"],
   props: {
     minimum: Number,
