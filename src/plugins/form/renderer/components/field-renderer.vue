@@ -1,6 +1,10 @@
 <script lang="tsx">
 import { defineComponent, inject, PropType } from "@vue/runtime-core";
-import { widgetsRenderDefaultMapping } from "../../widgets";
+import {
+  IDesignerWidgetValueConfig,
+  IRenderWidgetValueConfig,
+  widgetsRenderDefaultMapping,
+} from "../../widgets";
 import { IWidgetSchema } from "../../widgets/type";
 import { WIDGETS_MAPPING } from "../../contants/provideNames";
 
@@ -17,7 +21,10 @@ export default defineComponent({
   },
   emits: ["change"],
   setup() {
-    const widgetsMapping = inject(WIDGETS_MAPPING, widgetsRenderDefaultMapping);
+    const widgetsMapping = inject(
+      WIDGETS_MAPPING,
+      widgetsRenderDefaultMapping
+    ) as Record<string, IRenderWidgetValueConfig | IDesignerWidgetValueConfig>;
 
     return {
       widgetsMapping,
@@ -26,7 +33,7 @@ export default defineComponent({
   render() {
     const Field: any = (this.widgetsMapping[
       this.fieldSchema!.widget as string
-    ] as any)[this.renderWidgetKey];
+    ] as IDesignerWidgetValueConfig)[this.renderWidgetKey];
     if (!Field) {
       return (
         <a-col span={24} class="col-item">

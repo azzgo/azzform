@@ -14,8 +14,8 @@ describe("indexedAllFieldSchemaPath", () => {
     const result = indexedAllFieldSchemaPath(sampleSchema);
 
     expect(result).toEqual({
-      name: 'name',
-      age: 'age',
+      name: 'properties.name',
+      age: 'properties.age',
     });
   });
 });

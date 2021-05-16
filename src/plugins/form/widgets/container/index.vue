@@ -1,4 +1,8 @@
-<script lang="tsx">
+<template>
+  <div>组件容器</div>
+</template>
+
+<script lang="ts">
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
@@ -6,9 +10,6 @@ export default defineComponent({
   components: {},
   props: {
     name: String,
-  },
-  render() {
-    return <div>组件 容器</div>;
   },
 });
 </script>
