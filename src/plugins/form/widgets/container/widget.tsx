@@ -5,16 +5,16 @@ import { IField } from "../../renderer/type";
 
 export default defineComponent({
   name: "container",
+  inheritAttrs: false,
   components: {},
   props: {
-    name: String,
     properties: {
       type: Object,
     },
   },
   setup(props) {
     const fields = computed(() => {
-      return parseSchemaIntoFields(props);
+      return parseSchemaIntoFields({ type: "object", ...props });
     });
 
     return { fields };

@@ -12,6 +12,7 @@ export default defineComponent({
   name: "field-renderer",
   props: {
     fieldSchema: { type: Object as PropType<IWidgetSchema>, require: true },
+    fieldName: String,
     readOnly: Boolean,
     value: { default: null },
     renderWidgetKey: {
@@ -45,6 +46,7 @@ export default defineComponent({
       <a-col span={this.fieldSchema?.column || 24} class="col-item">
         <a-form-item label={this.fieldSchema?.title}>
           <Field
+            fieldName={this.fieldName}
             {...this.fieldSchema}
             value={this.value}
             onChange={(val: any) => this.$emit("change", val)}

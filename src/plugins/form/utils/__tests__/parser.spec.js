@@ -18,4 +18,23 @@ describe("indexedAllFieldSchemaPath", () => {
       age: 'properties.age',
     });
   });
+
+  test.only("A nest form schema, should cache all properties maped schema", () => {
+    const sampleSchema = {
+      type: "object",
+      properties: {
+        basicInfo: { type: "object", widget: "container", properties: {
+            name: { type: "string", widget: "input"}
+
+        } },
+      },
+    };
+
+    const result = indexedAllFieldSchemaPath(sampleSchema);
+
+    expect(result).toEqual({
+      basicInfo: 'properties.basicInfo',
+      name: 'properties.basicInfo.properties.name',
+    });
+  });
 });

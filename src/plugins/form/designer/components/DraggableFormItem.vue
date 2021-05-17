@@ -1,6 +1,14 @@
+<template>
+  <field-renderer
+    :fieldName="fieldName"
+    :fieldSchema="fieldSchema"
+    @click="handleClick"
+    renderWidgetKey="Preview"
+    :class="{ 'preview-field-active': actived, 'form-item': true }"
+  ></field-renderer>
+</template>
 <script lang="tsx">
 import { computed, defineComponent, PropType } from "@vue/runtime-core";
-import draggable from "vuedraggable";
 import FieldRenderer from "../../renderer/components/field-renderer";
 import { state } from "../../store";
 import { IWidgetConfig } from "../../widgets/type";
@@ -20,22 +28,11 @@ export default defineComponent({
     return { actived };
   },
   components: {
-    draggable,
-    [FieldRenderer.name]: FieldRenderer,
-  },
-  render() {
-    return (
-      <field-renderer
-        fieldSchema={this.fieldSchema}
-        readOnly={true}
-        onClick={this.handleClick}
-        renderWidgetKey="Preview"
-        class={{ "preview-field-active": this.actived, "form-item": true }}
-      ></field-renderer>
-    );
+    FieldRenderer,
   },
   methods: {
-    handleClick() {
+    handleClick(event: UIEvent) {
+      event.stopPropagation();
       state.designer.selectFieldName = this.fieldName!;
     },
   },
@@ -48,7 +45,7 @@ export default defineComponent({
   background-color: white;
 
   :deep(input),
-  :deep(textarea){
+  :deep(textarea) {
     cursor: pointer;
     pointer-events: none;
     resize: none;

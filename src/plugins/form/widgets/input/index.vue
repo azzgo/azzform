@@ -1,7 +1,7 @@
 <template>
   <a-input
-    value="{this.value}"
-    placeholder="{this.placeholder}"
+    :value="value"
+    :placeholder="placeholder"
     @change="handleOnChange"
   />
 </template>

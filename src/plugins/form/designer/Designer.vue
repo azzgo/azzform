@@ -12,10 +12,10 @@ import DesignerHeader from "./sections/DesignerHeader.vue";
 import DesignerEditor from "./sections/DesignerEditor.vue";
 import { ref } from "@vue/reactivity";
 import {
-  computed,
   defineComponent,
   PropType,
   provide,
+  watch,
 } from "@vue/runtime-core";
 import {
   INDEXED_FIELDSCHEMA_PATH,
@@ -51,11 +51,13 @@ export default defineComponent({
 
     provide(WIDGETS_MAPPING, props.widgetsMapping);
 
-    const indexedFieldSchemas = computed(() =>
-      indexedAllFieldSchemaPath(schema.value)
-    );
+    const indexedFieldSchemaPath =  ref<Record<string, string>>({})
 
-    provide(INDEXED_FIELDSCHEMA_PATH, indexedFieldSchemas);
+    watch(schema, () => {
+      indexedFieldSchemaPath.value = indexedAllFieldSchemaPath(schema.value)
+    }, { immediate: true, deep: true})
+
+    provide(INDEXED_FIELDSCHEMA_PATH, indexedFieldSchemaPath);
   },
 });
 </script>

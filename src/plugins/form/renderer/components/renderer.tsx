@@ -60,6 +60,7 @@ export default defineComponent({
           return (
             <field-renderer
               key={field.fieldName}
+              fieldName={field.fieldName}
               fieldSchema={field.fieldSchema}
               value={this.computedFormData[field.fieldName]}
               onChange={(val: any) =>

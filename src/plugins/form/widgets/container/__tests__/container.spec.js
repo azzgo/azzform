@@ -1,5 +1,6 @@
 import Widget from "../widget";
 import { shallowMount } from "@vue/test-utils";
+import FieldRender from "../../../renderer/components/field-renderer";
 
 describe("GIVEN Container in render mode", () => {
   test("when with a object form schema, it should render all properties widget", () => {
@@ -20,6 +21,6 @@ describe("GIVEN Container in render mode", () => {
       },
     });
 
-    expect(wrapper.find("FieldRenderer")).toBeGreaterThan(0);
+    expect(wrapper.findComponent(FieldRender).exists()).toBeTruthy();
   });
 });

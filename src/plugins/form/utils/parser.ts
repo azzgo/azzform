@@ -39,7 +39,7 @@ export function indexedAllFieldSchemaPath(
       ) {
         Object.assign(
           indexedFieldSchemaPath,
-          indexedAllFieldSchemaPath(schema.properties, propName)
+          indexedAllFieldSchemaPath(schema.properties[propName], `properties.${propName}`)
         );
       }
     });

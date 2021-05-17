@@ -7,9 +7,10 @@ export default defineWidget({
   category: 'advance',
   schema: {
     title: "容器",
-    type: "string",
+    type: "object",
     widget: widgetName,
     column: 24,
+    properties: {},
   },
 });
 
