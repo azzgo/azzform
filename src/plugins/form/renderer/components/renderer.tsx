@@ -1,12 +1,16 @@
-<script lang="tsx">
 import { widgetsRenderDefaultMapping } from "../../widgets";
 import { parseSchemaIntoFields } from "../../utils/parser";
-import FieldRenderer from "./field-renderer.vue";
+import FieldRenderer from "./field-renderer";
 import { resolveFormData } from "../../utils/resolve";
-import { computed, defineComponent, PropType, provide } from "@vue/runtime-core";
+import {
+  computed,
+  defineComponent,
+  PropType,
+  provide,
+} from "@vue/runtime-core";
 import { WIDGETS_MAPPING } from "../../contants/provideNames";
 import { IWidgetSchema } from "../../widgets/type";
-import { IField } from '../type'
+import { IField } from "../type";
 
 export default defineComponent({
   name: "form-renderer",
@@ -29,16 +33,17 @@ export default defineComponent({
     this.$emit("update:formData", this.computedFormData);
   },
   setup(props) {
+    const fields = computed(() => parseSchemaIntoFields(props.schema));
+    const computedFormData = computed(() =>
+      resolveFormData(props.schema, props.formData)
+    );
 
-    const fields = computed(()  => parseSchemaIntoFields(props.schema))
-    const computedFormData  = computed(() => resolveFormData(props.schema, props.formData))
-
-    provide(WIDGETS_MAPPING, props.widgetsMapping)
+    provide(WIDGETS_MAPPING, props.widgetsMapping);
 
     return {
       fields,
       computedFormData,
-    }
+    };
   },
   components: {
     [FieldRenderer.name]: FieldRenderer,
@@ -70,4 +75,3 @@ export default defineComponent({
     );
   },
 });
-</script>

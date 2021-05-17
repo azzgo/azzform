@@ -1,7 +1,6 @@
 ---
-to: src/plugins/form/widgets/<%= name %>/index.vue
+to: src/plugins/form/widgets/<%= name %>/widget.tsx
 ---
-<script lang="tsx">
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
@@ -14,4 +13,3 @@ export default defineComponent({
     return <div>组件 <%= widgetText %></div>;
   },
 });
-</script>

@@ -1,4 +1,4 @@
-import Widget from "../index.vue";
+import Widget from "../widget";
 import { shallowMount } from "@vue/test-utils";
 
 describe("GIVEN Container in render mode", () => {

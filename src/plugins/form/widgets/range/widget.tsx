@@ -1,4 +1,3 @@
-<script lang="tsx">
 import { defineComponent } from "@vue/runtime-core";
 
 export default defineComponent({
@@ -29,4 +28,3 @@ export default defineComponent({
     );
   },
 });
-</script>

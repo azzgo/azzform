@@ -1,4 +1,3 @@
-<script lang="tsx">
 import { defineComponent, PropType } from "@vue/runtime-core";
 import config from "./config";
 
@@ -29,21 +28,10 @@ export default defineComponent({
             min={1}
             max={24}
             value={this.formData.column}
-            onChange={(value: number) => {
+            onChange={(value: ChangeEvent) => {
               this.$emit("formDataChange", {
                 ...this.formData,
                 column: value,
-              });
-            }}
-          />
-        </a-form-item>
-        <a-form-item label="提示">
-          <a-input
-            value={this.formData.placeholder}
-            onChange={(event: ChangeEvent) => {
-              this.$emit("formDataChange", {
-                ...this.formData,
-                placeholder: event.target.value,
               });
             }}
           />
@@ -52,4 +40,3 @@ export default defineComponent({
     );
   },
 });
-</script>

@@ -1,1 +1,2 @@
-export { default as FormRenderer } from "./components/renderer.vue";
+export { default as FormRenderer } from "./components/renderer";
+

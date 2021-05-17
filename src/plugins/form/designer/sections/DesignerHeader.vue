@@ -27,7 +27,7 @@
 </template>
 
 <script lang="ts">
-import Renderer from "../../renderer/components/renderer.vue";
+import Renderer from "../../renderer/components/renderer";
 import { LeftOutlined } from "@ant-design/icons-vue";
 import { defineComponent, inject, reactive, toRefs } from "@vue/runtime-core";
 import { SCHEMA } from "../../contants/provideNames";

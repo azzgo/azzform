@@ -1,4 +1,3 @@
-<script lang="tsx">
 import { defineComponent, inject, PropType } from "@vue/runtime-core";
 import {
   IDesignerWidgetValueConfig,
@@ -7,6 +6,7 @@ import {
 } from "../../widgets";
 import { IWidgetSchema } from "../../widgets/type";
 import { WIDGETS_MAPPING } from "../../contants/provideNames";
+import "../styles/field-renderer.css";
 
 export default defineComponent({
   name: "field-renderer",
@@ -54,11 +54,3 @@ export default defineComponent({
     );
   },
 });
-</script>
-
-<style scoped>
-.col-item {
-  padding: 5px 10px;
-  box-sizing: border-box;
-}
-</style>

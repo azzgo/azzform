@@ -1,6 +1,6 @@
 import config from "./config";
-import Widget from "./index.vue";
-import Setting from "./setting.vue";
-import Preview from'./preview.vue';
+import Widget from "./widget";
+import Setting from "./setting";
+import Preview from'./preview';
 
 export { Preview, config, Setting, Widget };

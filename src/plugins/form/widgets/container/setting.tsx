@@ -1,4 +1,3 @@
-<script lang="tsx">
 import { defineComponent, PropType } from "@vue/runtime-core";
 import config from "./config";
 
@@ -41,4 +40,3 @@ export default defineComponent({
     );
   },
 });
-</script>

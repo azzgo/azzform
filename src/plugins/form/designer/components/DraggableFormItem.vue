@@ -1,7 +1,7 @@
 <script lang="tsx">
 import { computed, defineComponent, PropType } from "@vue/runtime-core";
 import draggable from "vuedraggable";
-import FieldRenderer from "../../renderer/components/field-renderer.vue";
+import FieldRenderer from "../../renderer/components/field-renderer";
 import { state } from "../../store";
 import { IWidgetConfig } from "../../widgets/type";
 export default defineComponent({

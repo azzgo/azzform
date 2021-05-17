@@ -3,4 +3,7 @@ module.exports = {
   transform: {
     "^.+\\.vue$": "vue-jest"
   },
+  moduleNameMapper: {
+    "^.+\\.(css|less)$": "identity-obj-proxy",
+  }
 };

@@ -17,6 +17,7 @@ import {
 import { createStore } from "./store";
 import { App } from "@vue/runtime-core";
 
+
 export default {
   install: function(vueApp: App<any>) {
     vueApp.use(Form);
