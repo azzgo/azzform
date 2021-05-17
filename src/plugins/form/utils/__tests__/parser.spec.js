@@ -19,7 +19,7 @@ describe("indexedAllFieldSchemaPath", () => {
     });
   });
 
-  test.only("A nest form schema, should cache all properties maped schema", () => {
+  test("A nest form schema, should cache all properties maped schema", () => {
     const sampleSchema = {
       type: "object",
       properties: {
