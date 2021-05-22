@@ -14,22 +14,22 @@ export function parseSchemaIntoFields(
   }
 }
 
-export function indexedAllFieldSchemaPath(
+export function indexedAllFieldDataPath(
   schema: Record<string, any>,
   pathPrefix: string = ""
 ): Record<string, string> {
-  const indexedFieldSchemaPath: Record<string, string> = {};
+  const indexedFieldPath: Record<string, string> = {};
 
   if (schema.type === "object" && typeof schema.properties === "object") {
     Object.keys(schema.properties).forEach((propName) => {
       const fieldSchema = schema.properties[propName];
       if (checkIsWidget(fieldSchema)) {
         if (pathPrefix.length > 0) {
-          indexedFieldSchemaPath[
+          indexedFieldPath[
             propName
-          ] = `${pathPrefix}.properties.${propName}`;
+          ] = `${pathPrefix}.${propName}`;
         } else {
-          indexedFieldSchemaPath[propName] = `properties.${propName}`;
+          indexedFieldPath[propName] = propName;
         }
       }
 
@@ -38,12 +38,12 @@ export function indexedAllFieldSchemaPath(
         typeof schema.properties === "object"
       ) {
         Object.assign(
-          indexedFieldSchemaPath,
-          indexedAllFieldSchemaPath(schema.properties[propName], `properties.${propName}`)
+          indexedFieldPath,
+          indexedAllFieldDataPath(schema.properties[propName], propName)
         );
       }
     });
   }
 
-  return indexedFieldSchemaPath;
+  return indexedFieldPath;
 }

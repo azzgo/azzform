@@ -1,20 +1,13 @@
-import { jsonClone } from "./common";
 import { IWidgetConfig, IWidgetSchema } from "../widgets/type";
-import {
-  IDesignerWidgetValueConfig,
-  IRenderWidgetValueConfig,
-} from "../widgets";
+import { IDesignerWidgetValueConfig } from "../widgets";
 
-export function resolveDefaultValue(
-  schema: IWidgetSchema<Record<string, any>>
-) {
+function resolveDefaultValue(schema: IWidgetSchema<Record<string, unknown>>) {
   const defaultMapping = {
     object: {},
     array: [],
     string: "",
-    number: "",
+    number: 0,
     null: null,
-    integer: "",
     boolean: false,
   };
 
@@ -25,6 +18,16 @@ export function resolveDefaultValue(
   // array且enum的情况，为多选框，默认值[]
   if (schema.type === "array" && Array.isArray(schema.enum)) {
     return [];
+  }
+
+  if (schema.type === "object" && typeof schema.properties === "object") {
+    const _data: Record<string, unknown> = {};
+
+    Object.entries(schema.properties as object).forEach(([key, value]) => {
+      _data[key] = resolveDefaultValue(value as IWidgetSchema);
+    });
+
+    return _data;
   }
 
   if (Array.isArray(schema.enum) && schema.enum.length > 0) {
@@ -39,10 +42,10 @@ export function resolveDefaultValue(
  */
 export function resolveFormData(
   schema: IWidgetSchema<Record<string, any>>,
-  formData: Record<string, any>
+  formData?: Record<string, any>
 ) {
-  const _data =
-    formData == null ? resolveDefaultValue(schema) : jsonClone(formData);
+  const _data: Record<string, unknown> =
+    formData == null ? resolveDefaultValue(schema) : formData;
 
   if (schema.type === "object" && typeof schema.properties === "object") {
     Object.entries(schema.properties).forEach(([key, value]) => {

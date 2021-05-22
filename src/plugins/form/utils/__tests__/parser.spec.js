@@ -1,4 +1,4 @@
-import { indexedAllFieldSchemaPath } from "../parser";
+import { indexedAllFieldDataPath } from "../parser";
 
 describe("indexedAllFieldSchemaPath", () => {
   test("A non nest form schema, should cache all properties maped schema", () => {
@@ -11,11 +11,11 @@ describe("indexedAllFieldSchemaPath", () => {
       },
     };
 
-    const result = indexedAllFieldSchemaPath(sampleSchema);
+    const result = indexedAllFieldDataPath(sampleSchema);
 
     expect(result).toEqual({
-      name: 'properties.name',
-      age: 'properties.age',
+      name: 'name',
+      age: 'age',
     });
   });
 
@@ -30,11 +30,11 @@ describe("indexedAllFieldSchemaPath", () => {
       },
     };
 
-    const result = indexedAllFieldSchemaPath(sampleSchema);
+    const result = indexedAllFieldDataPath(sampleSchema);
 
     expect(result).toEqual({
-      basicInfo: 'properties.basicInfo',
-      name: 'properties.basicInfo.properties.name',
+      basicInfo: 'basicInfo',
+      name: 'basicInfo.name',
     });
   });
 });
