@@ -1,4 +1,6 @@
-# Form Designer of Vue Version
+# AzzForm
+
+> A Form Designer of Vue Version
 
 This is a Vue Version Form Designer. It may be a good starter to be part of your low code Soluton
 
