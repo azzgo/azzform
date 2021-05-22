@@ -19,6 +19,7 @@ import { fromPairs, set } from "lodash";
 import { IField } from "../../renderer/type";
 import { INDEXED_FIELDSCHEMA_PATH, SCHEMA } from "../../contants/provideNames";
 import config from './config'
+import { getTargetSchemaPath } from "../../utils/common";
 
 export default defineComponent({
   name: "container",
@@ -53,7 +54,7 @@ export default defineComponent({
         };
 
         const curSchemaPath = indexedFieldSchemaPath.value[props.fieldName!];
-        set(schema.value, curSchemaPath, newSchema);
+        set(schema.value, getTargetSchemaPath(curSchemaPath), newSchema);
       },
     });
 

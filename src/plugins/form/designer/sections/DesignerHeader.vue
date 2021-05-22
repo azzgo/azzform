@@ -16,7 +16,7 @@
     </a-row>
     <a-drawer
       :visible="previewDrawerVisible"
-      @close="previewDrawerVisible = false"
+      @close="closePreview"
       height="100vh"
       title="预览"
       placement="bottom"
@@ -47,10 +47,15 @@ export default defineComponent({
     const schema = inject(SCHEMA);
 
     function toPreview() {
+      data.formData =  {}
       data.previewDrawerVisible = true;
     }
 
-    return { toPreview, ...toRefs(data), schema };
+    function closePreview() {
+      data.previewDrawerVisible = false;
+    }
+
+    return { toPreview, closePreview, ...toRefs(data), schema };
   },
 });
 </script>

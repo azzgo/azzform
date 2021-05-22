@@ -27,7 +27,7 @@ import {
   widgetsDesignerDefaultMapping,
 } from "../widgets";
 import { IWidgetSchema } from "../widgets/type";
-import { indexedAllFieldSchemaPath } from "../utils/parser";
+import { indexedAllFieldDataPath } from "../utils/parser";
 
 export default defineComponent({
   name: "form-designer",
@@ -41,6 +41,7 @@ export default defineComponent({
       default: () => ({}),
     },
   },
+  emits: ["goback"],
   components: {
     DesignerHeader,
     DesignerEditor,
@@ -51,13 +52,13 @@ export default defineComponent({
 
     provide(WIDGETS_MAPPING, props.widgetsMapping);
 
-    const indexedFieldSchemaPath =  ref<Record<string, string>>({})
+    const indexedFieldPath =  ref<Record<string, string>>({})
 
     watch(schema, () => {
-      indexedFieldSchemaPath.value = indexedAllFieldSchemaPath(schema.value)
+      indexedFieldPath.value = indexedAllFieldDataPath(schema.value)
     }, { immediate: true, deep: true})
 
-    provide(INDEXED_FIELDSCHEMA_PATH, indexedFieldSchemaPath);
+    provide(INDEXED_FIELDSCHEMA_PATH, indexedFieldPath);
   },
 });
 </script>

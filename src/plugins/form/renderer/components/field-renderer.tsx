@@ -1,4 +1,4 @@
-import { defineComponent, inject, PropType } from "@vue/runtime-core";
+import { computed, defineComponent, inject, PropType } from "@vue/runtime-core";
 import {
   IDesignerWidgetValueConfig,
   IRenderWidgetValueConfig,
@@ -13,28 +13,28 @@ export default defineComponent({
   props: {
     fieldSchema: { type: Object as PropType<IWidgetSchema>, require: true },
     fieldName: String,
-    readOnly: Boolean,
-    value: { default: null },
     renderWidgetKey: {
       type: String as PropType<"Widget" | "Preview">,
       default: "Widget",
     },
   },
-  emits: ["change"],
-  setup() {
+  setup(props) {
     const widgetsMapping = inject(
       WIDGETS_MAPPING,
       widgetsRenderDefaultMapping
     ) as Record<string, IRenderWidgetValueConfig | IDesignerWidgetValueConfig>;
 
+    const Field = computed(() => {
+      const widgetConfig = widgetsMapping[props.fieldSchema!.widget] as IDesignerWidgetValueConfig
+      return widgetConfig[props.renderWidgetKey];
+    })
     return {
-      widgetsMapping,
+      Field,
     };
   },
   render() {
-    const Field: any = (this.widgetsMapping[
-      this.fieldSchema!.widget as string
-    ] as IDesignerWidgetValueConfig)[this.renderWidgetKey];
+    // issue at https://github.com/vuejs/vue-next/issues/3224
+    const Field = this.Field  as  Newable
     if (!Field) {
       return (
         <a-col span={24} class="col-item">
@@ -42,14 +42,13 @@ export default defineComponent({
         </a-col>
       );
     }
+
     return (
       <a-col span={this.fieldSchema?.column || 24} class="col-item">
         <a-form-item label={this.fieldSchema?.title}>
           <Field
             fieldName={this.fieldName}
             {...this.fieldSchema}
-            value={this.value}
-            onChange={(val: any) => this.$emit("change", val)}
           />
         </a-form-item>
       </a-col>

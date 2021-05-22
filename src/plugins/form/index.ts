@@ -14,7 +14,6 @@ import {
   Tabs,
   Drawer,
 } from "ant-design-vue";
-import { createStore } from "./store";
 import { App } from "@vue/runtime-core";
 
 
@@ -32,7 +31,6 @@ export default {
     vueApp.use(Slider);
     vueApp.use(Empty);
     vueApp.use(Tabs);
-    createStore();
   },
 };
 

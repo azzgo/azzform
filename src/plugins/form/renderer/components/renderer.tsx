@@ -14,23 +14,20 @@ import { IField } from "../type";
 
 export default defineComponent({
   name: "form-renderer",
-  emits: ["change", "update:formData"],
+  emits: ["submit"],
   props: {
     schema: {
       type: Object as PropType<IWidgetSchema>,
       default: () => ({}),
     },
     formData: {
-      type: Object,
+      type: Object as PropType<Record<string, unknown>>,
       default: () => ({}),
     },
     widgetsMapping: {
       type: Object,
       default: () => widgetsRenderDefaultMapping,
     },
-  },
-  mounted() {
-    this.$emit("update:formData", this.computedFormData);
   },
   setup(props) {
     const fields = computed(() => parseSchemaIntoFields(props.schema));
@@ -45,30 +42,15 @@ export default defineComponent({
       computedFormData,
     };
   },
-  components: {
-    [FieldRenderer.name]: FieldRenderer,
-  },
-  methods: {
-    handleFormChange(val: any) {
-      this.$emit("update:formData", val);
-    },
-  },
   render() {
     return (
       <a-form layout="vertical">
         {this.fields?.map((field: IField) => {
           return (
-            <field-renderer
+            <FieldRenderer
               key={field.fieldName}
               fieldName={field.fieldName}
               fieldSchema={field.fieldSchema}
-              value={this.computedFormData[field.fieldName]}
-              onChange={(val: any) =>
-                this.handleFormChange({
-                  ...this.computedFormData,
-                  [field.fieldName]: val,
-                })
-              }
             />
           );
         })}

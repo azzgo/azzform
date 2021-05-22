@@ -7,7 +7,9 @@ import {
   Ref,
 } from "@vue/runtime-core";
 import { state } from "../../store";
-import { widgetsDesignerDefaultMapping } from "../../widgets";
+import {
+  widgetsDesignerDefaultMapping,
+} from "../../widgets";
 import { IWidgetSchema } from "../../widgets/type";
 import {
   WIDGETS_MAPPING,
@@ -15,6 +17,7 @@ import {
   SCHEMA,
 } from "../../contants/provideNames";
 import { get, set } from "lodash";
+import { getTargetSchemaPath } from "../../utils/common";
 
 export default defineComponent({
   name: "config-panel",
@@ -31,23 +34,21 @@ export default defineComponent({
       {}
     ) as ComputedRef<Record<string, string>>;
 
-    const Setting: any = computed(() => {
-      const activedFieldPath =
-        indexedFieldSchemaPath.value[state.designer.selectFieldName];
-      const widgetName = get(schema.value, activedFieldPath, {}).widget;
+    const activedFieldPath = computed(() => {
+        return indexedFieldSchemaPath.value[state.designer.selectFieldName];
+      })
+
+    const activedFieldSchema = computed<IWidgetSchema>(() => {
+      return get(schema.value, getTargetSchemaPath(activedFieldPath.value));
+    });
+
+    const Setting = computed(() => {
+      const widgetName = activedFieldSchema.value?.widget;
       return widgetsMapping[widgetName!]?.Setting;
     });
 
-    const activedFieldSchema = computed(() => {
-      const activedFieldPath =
-        indexedFieldSchemaPath.value[state.designer.selectFieldName];
-      return get(schema.value, activedFieldPath);
-    });
-
     function handleSettingFormDataChange(val: IWidgetSchema) {
-      const activedFieldPath =
-        indexedFieldSchemaPath.value[state.designer.selectFieldName];
-      set(schema.value, activedFieldPath, val);
+      set(schema.value, getTargetSchemaPath(activedFieldPath.value), val);
     }
 
     return {
@@ -58,7 +59,8 @@ export default defineComponent({
     };
   },
   render() {
-    const Setting = this.Setting;
+    // issue at https://github.com/vuejs/vue-next/issues/3224
+    const Setting = this.Setting as Newable;
     const activedFieldSchema = this.activedFieldSchema;
 
     return (
