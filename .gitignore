@@ -25,3 +25,6 @@ pnpm-debug.log*
 # Lock files  
 yarn.lock
 package-lock.json
+
+# test related
+coverage/
