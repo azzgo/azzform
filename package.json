@@ -8,7 +8,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "widget:new": "hygen widget new",
-    "doc": "docsify serve -i doc.html"
+    "doc": "docsify serve -i docs/index.html"
   },
   "dependencies": {
     "ant-design-vue": "^2.1.2",
