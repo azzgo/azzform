@@ -1,11 +1,8 @@
 import { reactive } from "vue";
 
-export let state = {
+export const state = reactive({
   designer: {
     selectFieldName: "",
   },
-};
+});
 
-export function createStore() {
-  state = reactive(state);
-}
