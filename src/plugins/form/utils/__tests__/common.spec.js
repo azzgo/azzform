@@ -18,7 +18,6 @@ test("give a data path, i can get target value json schema definition", () => {
   };
 
   const schemaPath = getTargetSchemaPath(dataPath);
-  console.log(schemaPath);
 
   expect(get(schema, schemaPath)).toEqual({
     type: "string",

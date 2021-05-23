@@ -17,7 +17,7 @@ import draggable from "vuedraggable";
 import DraggableFormItem from "../../designer/components/DraggableFormItem.vue";
 import { fromPairs, set } from "lodash";
 import { IField } from "../../renderer/type";
-import { INDEXED_FIELDSCHEMA_PATH, SCHEMA } from "../../contants/provideNames";
+import { INDEXED_FIELD_DATA_PATH, SCHEMA } from "../../contants/provideNames";
 import config from './config'
 import { getTargetSchemaPath } from "../../utils/common";
 
@@ -37,7 +37,7 @@ export default defineComponent({
   setup(props) {
     const schema = inject(SCHEMA, {}) as Ref;
     const indexedFieldSchemaPath = inject(
-      INDEXED_FIELDSCHEMA_PATH,
+      INDEXED_FIELD_DATA_PATH,
       {}
     ) as ComputedRef<Record<string, string>>;
 

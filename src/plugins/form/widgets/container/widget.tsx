@@ -23,7 +23,7 @@ export default defineComponent({
     return (
       <>
         {this.fields?.map((field: IField) => (
-          <FieldRender key={field.fieldName} fieldSchema={field.fieldSchema} />
+          <FieldRender key={field.fieldName} fieldName={field.fieldName} fieldSchema={field.fieldSchema} />
         ))}
       </>
     );

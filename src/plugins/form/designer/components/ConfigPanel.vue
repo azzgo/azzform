@@ -13,7 +13,7 @@ import {
 import { IWidgetSchema } from "../../widgets/type";
 import {
   WIDGETS_MAPPING,
-  INDEXED_FIELDSCHEMA_PATH,
+  INDEXED_FIELD_DATA_PATH,
   SCHEMA,
 } from "../../contants/provideNames";
 import { get, set } from "lodash";
@@ -30,7 +30,7 @@ export default defineComponent({
     const schema = inject(SCHEMA) as Ref;
 
     const indexedFieldSchemaPath = inject(
-      INDEXED_FIELDSCHEMA_PATH,
+      INDEXED_FIELD_DATA_PATH,
       {}
     ) as ComputedRef<Record<string, string>>;
 

@@ -18,7 +18,7 @@ import {
   watch,
 } from "@vue/runtime-core";
 import {
-  INDEXED_FIELDSCHEMA_PATH,
+  INDEXED_FIELD_DATA_PATH,
   SCHEMA,
   WIDGETS_MAPPING,
 } from "../contants/provideNames";
@@ -58,7 +58,7 @@ export default defineComponent({
       indexedFieldPath.value = indexedAllFieldDataPath(schema.value)
     }, { immediate: true, deep: true})
 
-    provide(INDEXED_FIELDSCHEMA_PATH, indexedFieldPath);
+    provide(INDEXED_FIELD_DATA_PATH, indexedFieldPath);
   },
 });
 </script>
