@@ -1,7 +1,7 @@
 <template>
   <draggable
     v-model="draggableFields"
-    class="prewview"
+    class="prewview ant-row"
     group="viewcomps"
     tag="a-form"
     item-key="fieldName"
@@ -57,6 +57,7 @@ export default defineComponent({
 
 <style lang="less" scoped>
 .prewview {
+  align-content: flex-start;
   height: 100%;
   height: calc(100vh - 62px);
   max-height: calc(100vh - 62px);

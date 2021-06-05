@@ -51,7 +51,7 @@ export default defineComponent({
   },
   render() {
     return (
-      <a-form model={this.computedFormData} layout="vertical">
+      <a-form class="ant-row" model={this.computedFormData} layout="vertical">
         {this.fields?.map((field: IField) => {
           return (
             <FieldRenderer
