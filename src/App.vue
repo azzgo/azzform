@@ -1,29 +1,61 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+    <div class="flex-1">
+      <FormRender :schema="schema" />
+    </div>
+    <div class="flex-1" id="json-viewer"></div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { FormRender, ISchema } from "./renderer";
 
 export default Vue.extend({
   name: "App",
   components: {
-    HelloWorld,
+    FormRender,
+  },
+  data() {
+    return {
+      schema: {
+        type: "object",
+        properties: {
+          name: {
+            type: "string",
+            title: "姓名",
+          },
+          age: {
+            type: "number",
+            title: "年龄",
+          },
+          brief: {
+            type: "string",
+            widget: "text",
+            title: "简介",
+          },
+        },
+      } as ISchema,
+    };
+  },
+  mounted() {
+    const editor: any = new (window as any).JSONEditor(
+      document.getElementById("json-viewer"),
+      { mode: "text" }
+    );
+    editor.set(this.schema);
   },
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.flex-1 {
+  flex: 1;
 }
 </style>
