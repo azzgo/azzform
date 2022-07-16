@@ -7,9 +7,11 @@ export { registerComponent };
 
 import Input from "./widgets/Input.vue";
 import NumberComp from "./widgets/Number.vue";
+import ObjectComp from "./widgets/Object.vue";
 import Textarea from "./widgets/Textarea.vue";
 
 // default widgets binding
 registerComponent("string", Input);
 registerComponent("number", NumberComp);
 registerComponent("text", Textarea);
+registerComponent("object", ObjectComp);

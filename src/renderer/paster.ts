@@ -3,6 +3,10 @@ import { IField, ISchema } from "./type";
 export function parseObjectSchemaIntoFileds<T extends ISchema = ISchema>(
   schema: T
 ): IField[] {
+  if (!schema?.type) {
+    return [];
+  }
+
   if (schema.type === "object" && typeof schema.properties === "object") {
     return Object.keys(schema.properties).map((propName) => {
       return {
@@ -12,5 +16,10 @@ export function parseObjectSchemaIntoFileds<T extends ISchema = ISchema>(
     });
   }
 
-  return [];
+  return [
+    {
+      name: "UnknownName",
+      schema,
+    },
+  ];
 }

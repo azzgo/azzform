@@ -1,7 +1,7 @@
 <template>
   <div>
     <FieldRender
-      v-for="field in fileds"
+      v-for="field in fields"
       :key="field.name"
       :name="field.name"
       :schema="field.schema"
@@ -31,7 +31,7 @@ export default Vue.extend({
     },
   },
   computed: {
-    fileds() {
+    fields() {
       return parseObjectSchemaIntoFileds(this.schema);
     },
   },

@@ -25,14 +25,34 @@ export default Vue.extend({
             type: "string",
             title: "姓名",
           },
-          age: {
-            type: "number",
-            title: "年龄",
+          basic: {
+            type: "object",
+            title: "基本信息",
+            properties: {
+              age: {
+                type: "number",
+                title: "年龄",
+              },
+              brief: {
+                type: "string",
+                widget: "text",
+                title: "简介",
+              },
+            },
           },
-          brief: {
-            type: "string",
-            widget: "text",
-            title: "简介",
+          address: {
+            type: "object",
+            title: "地址",
+            properties: {
+              address1: {
+                type: "string",
+                title: "主要地址",
+              },
+              address2: {
+                type: "string",
+                title: "次要地址",
+              },
+            },
           },
         },
       } as ISchema,
