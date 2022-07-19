@@ -37,7 +37,11 @@ export default Vue.extend({
   },
   computed: {
     fields() {
-      return parseObjectSchemaIntoFileds(this.$props);
+      return parseObjectSchemaIntoFileds({
+        type: "object",
+        title: this.title,
+        properties: this.properties,
+      });
     },
   },
 });

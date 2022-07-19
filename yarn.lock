@@ -2441,6 +2441,11 @@ autoprefixer@^10.2.4:
     picocolors "^1.0.0"
     postcss-value-parser "^4.2.0"
 
+azz-storage@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.npmmirror.com/azz-storage/-/azz-storage-0.0.2.tgz#550014eda28b9e3851e1ea98956bdbb1a1eee874"
+  integrity sha512-CPC7GFgmnvRFvOgsFyolbdY2ZvmE1f0svJTfoQf8vtVveQ1DhqHa4kuhKgPchd18EmH604mNQHZa9twBhSmy3g==
+
 babel-jest@^27.0.6, babel-jest@^27.1.0, babel-jest@^27.5.1:
   version "27.5.1"
   resolved "https://registry.npmmirror.com/babel-jest/-/babel-jest-27.5.1.tgz#a1bf8d61928edfefd21da27eb86a695bfd691444"
