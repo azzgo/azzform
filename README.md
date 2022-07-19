@@ -1,12 +1,14 @@
-# azzform-renderer
+# Swagger 2 Form
 
 ## 功能
 
-将一个 object 的 json schema 直出表单
+- 通过 Swagger json 获取 api 调用方法
+- 通过 Swagger 的 某个 DTO 生成 Vue 组件引用，可用于通用 Render
 
-期望效果： API 中的 Swagger JSON 定义的 DTO 来直出对应提交表单
+## TODO
 
-## 不足
-
-1. 难以覆盖跨字段的逻辑关键（比如关联校验，关联显隐），需要通过在 JSON Schema 基础上附着 DSL 元信息来控制
-2. 难以控制字段对应表单元素分组等富有变化的 UI 布局，因为 JSON Schema 是基于数据格式的描述
+- [ ] 安装 swagger js 
+- [ ] 找个测试用的 swagger.json
+- [ ] 通过测试用例来驱动实现功能
+  - [ ] TBD
+- [ ] 通过 Storybook 或者其他的方式展示功能
