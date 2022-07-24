@@ -22,3 +22,16 @@ test("Simple Type Map to Widget", () => {
   expect(field.schema).toEqual({ type: "string" });
 });
 
+test("Simple type Map to Field", () => {
+  // prepare Schema
+  const schema = { type: "string" } as ISchema;
+  registerComponent("string", Input);
+
+  // when
+  const field: IField = parseSchema(schema, name) as IField;
+
+  // then
+  expect(field.name).toBeUndefined();
+  expect(field.Widget).not.toBe(Input);
+  expect(field.schema).toEqual({ type: "string" });
+})

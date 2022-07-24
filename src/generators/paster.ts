@@ -1,5 +1,7 @@
+import { defineComponent } from "vue";
 import { IField, ISchema } from "./type";
 import { getWidget } from "./utils";
+import { Field } from "@formily/vue";
 
 /**
  * @param schema: 需要解析的 Schema, 需要符合 JSON Schema 规范
@@ -26,8 +28,11 @@ export function parseSchema<T extends ISchema = ISchema>(
     return {
       name,
       schema,
-      // TBD 产生 Field 字段, 先把 Widget 放这
-      Widget,
+      Widget: defineComponent({
+        render(h) {
+          return h(Field, { props: { component: [Widget] } });
+        },
+      }) as unknown,
     } as IField;
   }
 
