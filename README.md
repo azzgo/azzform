@@ -16,5 +16,24 @@
 - [X] 找个测试用的 swagger.json
 - [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
 - [ ] 解析 JSONSchema
+  - [ ] 对 简单 type[non arrary & object] 解析 -> Field + config | Widget + config
+    - [X] 处理 type -> Widget 的映射场景
+    - [ ] 处理 type, name -> Field 的映射场景
+    - [ ] 处理 type + format 通用处理逻辑
+    - [ ] 处理 type + enum 场景
+  - [ ] 对 type[object] 打散 Field + config 项数据
+  - [ ] 处理 type[array] 场景通用处理
+    - [ ] 处理 type[array] + enum + 多选场景处理
+  - [ ] 处理 简单 type[custom] 场景的组件渲染逻辑
+  - [ ] 处理 type[object|arrary custom] 非通用场景的处理逻辑
+  - [ ] 处理 type[ignore] 场景的处理逻辑
 - [ ] 尝试返回不同的表单组件
 - [ ] 尝试渲染
+
+## NEXT
+
+- [ ] 组件间的联动方案
+  - [ ] 校验联动
+  - [ ] 显隐联动
+  - [ ] 数据联动
+- [ ] 数据映射
