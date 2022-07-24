@@ -7,6 +7,16 @@ Vue.config.productionTip = false;
 
 Vue.use(VueCompositionAPI);
 
-new Vue({
-  render: (h) => h(App),
-}).$mount("#app");
+import SwaggerClient from "swagger-client";
+import originSwaggerJSON from "./swagger.json";
+
+SwaggerClient.resolve({
+  spec: originSwaggerJSON,
+  allowMetaPatches: false,
+}).then((result: any) => {
+  if (result?.spec && result?.errors.length === 0) {
+    new Vue({
+      render: (h) => h(App, { props: { swaggerJSON: result.spec } }),
+    }).$mount("#app");
+  }
+});

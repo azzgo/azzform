@@ -15,8 +15,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { ISchema } from "./renderer";
-import swaggerJSON from "./swagger.json";
-import { get } from "lodash";
+import { cloneDeep, get } from "lodash";
 
 let editor: any;
 
@@ -25,12 +24,18 @@ export default Vue.extend({
   components: {
     // FormRender,
   },
+  props: {
+    swaggerJSON: {
+      type: Object,
+      required: true,
+    },
+  },
   data() {
-    const jsonPath = "definitions.ApplicationDTO";
+    const jsonPath = "paths./applications/bulk-audit.post.parameters.0.schema";
 
     return {
       path: jsonPath,
-      schema: get(swaggerJSON, jsonPath) as ISchema,
+      schema: get(cloneDeep(this.swaggerJSON), jsonPath) as ISchema,
     };
   },
   mounted() {
@@ -40,6 +45,7 @@ export default Vue.extend({
         mode: "view",
       }
     );
+
     editor.set(this.schema);
   },
   watch: {
@@ -50,10 +56,10 @@ export default Vue.extend({
   methods: {
     updateScheme() {
       if (!this.path || this.path?.trim()?.length === 0) {
-        this.schema = swaggerJSON;
+        this.schema = cloneDeep(this.swaggerJSON);
         return;
       }
-      this.schema = get(swaggerJSON, this.path) as ISchema;
+      this.schema = get(cloneDeep(this.swaggerJSON), this.path) as ISchema;
     },
   },
 });
