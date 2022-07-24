@@ -5,6 +5,7 @@
     "strict": false,
     "jsx": "preserve",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "noImplicitAny": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
