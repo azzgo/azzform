@@ -8,7 +8,7 @@ beforeEach(() => {
   store.widgets.clear();
 });
 
-test("Single Type Map to Widget", () => {
+test("Simple Type Map to Widget", () => {
   // prepare Schema
   const schema = { type: "string" } as ISchema;
   registerComponent("string", Input);
@@ -21,3 +21,4 @@ test("Single Type Map to Widget", () => {
   expect(field.Widget).toBe(Input);
   expect(field.schema).toEqual({ type: "string" });
 });
+
