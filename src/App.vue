@@ -16,10 +16,12 @@
 import Vue from "vue";
 import { ISchema } from "./renderer";
 import ls from "./ls";
-import defaultSwaggerJSON from "./swagger.json";
+import swaggerJSON from "./swagger.json";
 import { get } from "lodash";
 
 const SchemaKey = "schema";
+
+let editor: any;
 
 export default Vue.extend({
   name: "App",
@@ -31,34 +33,30 @@ export default Vue.extend({
 
     return {
       path: jsonPath,
-      schema: get(ls.get(SchemaKey, defaultSwaggerJSON), jsonPath) as ISchema,
+      schema: get(ls.get(SchemaKey, swaggerJSON), jsonPath) as ISchema,
     };
   },
   mounted() {
-    const editor = new (window as any).JSONEditor(
+    editor = new (window as any).JSONEditor(
       document.getElementById("json-viewer"),
       {
-        mode: "tree",
-        onChangeText: (text: any) => {
-          try {
-            ls.set(SchemaKey, JSON.parse(text));
-            // eslint-disable-next-line
-          } catch (e) {}
-        },
+        mode: "view",
       }
     );
-    editor.set(ls.get(SchemaKey, defaultSwaggerJSON));
+    editor.set(this.schema);
+  },
+  watch: {
+    schema(val: ISchema) {
+      editor.set(val);
+    },
   },
   methods: {
     updateScheme() {
       if (!this.path || this.path?.trim()?.length === 0) {
-        this.schema = ls.get(SchemaKey, defaultSwaggerJSON);
+        this.schema = ls.get(SchemaKey, swaggerJSON);
         return;
       }
-      this.schema = get(
-        ls.get(SchemaKey, defaultSwaggerJSON),
-        this.path
-      ) as ISchema;
+      this.schema = get(ls.get(SchemaKey, swaggerJSON), this.path) as ISchema;
     },
   },
 });
