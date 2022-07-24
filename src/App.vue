@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <div class="flex-1">
-      <FormRender :schema="schema" />
+      <div class="flex">
+        <input class="flex-1" name="path" v-model="path" />
+        <button @click="updateScheme">更新 PATH</button>
+      </div>
+      <hr />
+      <div>Form Render Section</div>
     </div>
     <div class="flex-1" id="json-viewer"></div>
   </div>
@@ -9,73 +14,52 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { FormRender, ISchema } from "./renderer";
+import { ISchema } from "./renderer";
 import ls from "./ls";
-
-const defaultSchema = {
-  type: "object",
-  properties: {
-    name: {
-      type: "string",
-      title: "姓名",
-    },
-    basic: {
-      type: "object",
-      title: "基本信息",
-      properties: {
-        age: {
-          type: "number",
-          title: "年龄",
-        },
-        brief: {
-          type: "string",
-          widget: "text",
-          title: "简介",
-        },
-      },
-    },
-    address: {
-      type: "object",
-      title: "地址",
-      properties: {
-        address1: {
-          type: "string",
-          title: "主要地址",
-        },
-        address2: {
-          type: "string",
-          title: "次要地址",
-        },
-      },
-    },
-  },
-} as ISchema;
+import defaultSwaggerJSON from "./swagger.json";
+import { get } from "lodash";
 
 const SchemaKey = "schema";
 
 export default Vue.extend({
   name: "App",
   components: {
-    FormRender,
+    // FormRender,
   },
   data() {
-    return { schema: ls.get(SchemaKey, defaultSchema) };
+    const jsonPath = "definitions.ApplicationDTO";
+
+    return {
+      path: jsonPath,
+      schema: get(ls.get(SchemaKey, defaultSwaggerJSON), jsonPath) as ISchema,
+    };
   },
   mounted() {
-    const editor: any = new (window as any).JSONEditor(
+    const editor = new (window as any).JSONEditor(
       document.getElementById("json-viewer"),
       {
-        mode: "text",
+        mode: "tree",
         onChangeText: (text: any) => {
           try {
             ls.set(SchemaKey, JSON.parse(text));
-            this.schema = ls.get(SchemaKey);
             // eslint-disable-next-line
           } catch (e) {}
         },
       }
     );
-    editor.set(this.schema);
+    editor.set(ls.get(SchemaKey, defaultSwaggerJSON));
+  },
+  methods: {
+    updateScheme() {
+      if (!this.path || this.path?.trim()?.length === 0) {
+        this.schema = ls.get(SchemaKey, defaultSwaggerJSON);
+        return;
+      }
+      this.schema = get(
+        ls.get(SchemaKey, defaultSwaggerJSON),
+        this.path
+      ) as ISchema;
+    },
   },
 });
 </script>
@@ -85,6 +69,10 @@ export default Vue.extend({
   display: flex;
   flex-direction: row;
   height: 100vh;
+}
+
+.flex {
+  display: flex;
 }
 
 .flex-1 {
