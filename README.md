@@ -7,8 +7,14 @@
 
 ## TODO
 
-- [ ] 安装 swagger js 
-- [ ] 找个测试用的 swagger.json
-- [ ] 通过测试用例来驱动实现功能
-  - [ ] TBD
-- [ ] 通过 Storybook 或者其他的方式展示功能
+- [X] 安装 依赖准备
+  - [X] lodash + @types
+  - [X] ajv 不确定是否有用
+  - [X] formily
+  - [X] vue composition-api
+  - [X] swagger-js 解析 swagger.json
+- [X] 找个测试用的 swagger.json
+- [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
+- [ ] 解析 JSONSchema
+- [ ] 尝试返回不同的表单组件
+- [ ] 尝试渲染
