@@ -4,7 +4,7 @@ import { UNKNOWN_WIDGET } from "./constants";
 import { store } from "./store";
 
 /**
- * @param type: 接受格式为 ${type}:${format}?${enum}/${readOnly}
+ * @param type: 接受格式为 ${type}:${format}?[enum]
  * @param comp: 合法的 Vue 组件
  * */
 export function registerComponent<
