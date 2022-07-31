@@ -21,6 +21,8 @@
 - [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
 - [ ] 解析 JSONSchema
   - [ ] 对 简单 type[non array & object] 解析 -> Field + config | Widget + config
+    - type 的解析规则 为 ${type}:${format}?${enum}
+      - reference:   https://xrender.fun/form-render/api/inner-widget
     - 注：简单场景下，name 通过生成器随机生成不重名的 name
     - [X] 处理 type -> Field 的映射场景
     - [ ] 处理 type + format 通用处理逻辑

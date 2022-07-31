@@ -3,6 +3,10 @@ import { ISchema } from ".";
 import { UNKNOWN_WIDGET } from "./constants";
 import { store } from "./store";
 
+/**
+ * @param type: 接受格式为 ${type}:${format}?${enum}/${readOnly}
+ * @param comp: 合法的 Vue 组件
+ * */
 export function registerComponent<
   Widget extends VueConstructor = VueConstructor
 >(type: string, comp: Widget) {
@@ -12,7 +16,20 @@ export function registerComponent<
 export function getWidget<Widget extends VueConstructor = VueConstructor>(
   schema: ISchema
 ): Widget | undefined {
-  const Widget = store.widgets.get(schema?.widget ?? schema.type) as Widget;
+  let Widget: Widget;
+  if (schema.widget) {
+    Widget = store.widgets.get(schema.widget) as Widget;
+  } else if (schema.type) {
+    if (schema.format) {
+      Widget = store.widgets.get(`${schema.type}:${schema.format}`) as Widget;
+    } else if (schema.enum) {
+      Widget = store.widgets.get(`${schema.type}?${schema.enum}`) as Widget;
+    } else {
+      Widget = store.widgets.get(schema.type) as Widget;
+    }
+  }
+
+
   if (!Widget) {
     console.info(`No found widget for [${schema.widget ?? schema.type}]`);
     return store.widgets.get(UNKNOWN_WIDGET) as Widget;
@@ -20,4 +37,3 @@ export function getWidget<Widget extends VueConstructor = VueConstructor>(
 
   return Widget;
 }
-
