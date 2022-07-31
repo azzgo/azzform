@@ -29,6 +29,7 @@ export function parseSchema<T extends ISchema = ISchema>(
       name,
       schema,
       Widget: defineComponent({
+        name: Widget.name + "_" + name,
         render(h) {
           return h(Field, { props: { component: [Widget] } });
         },

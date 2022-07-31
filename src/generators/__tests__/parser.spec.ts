@@ -28,10 +28,11 @@ test("Simple type Map to Field", () => {
   registerComponent("string", Input);
 
   // when
-  const field: IField = parseSchema(schema, name) as IField;
+  const field: IField = parseSchema(schema, "name") as IField;
 
   // then
-  expect(field.name).toBeUndefined();
+  expect(field.name).toEqual("name");
   expect(field.Widget).not.toBe(Input);
+  expect(field.Widget.name).toEqual("InputWidget_name");
   expect(field.schema).toEqual({ type: "string" });
-})
+});
