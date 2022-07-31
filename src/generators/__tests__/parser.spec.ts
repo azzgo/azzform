@@ -19,77 +19,79 @@ beforeEach(() => {
   store.widgets.clear();
 });
 
-test("Simple type Map to Field", () => {
-  // prepare Schema
-  const schema = { type: "string" } as ISchema;
-  registerComponent("string", Input);
-  jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
+describe("One layer JSON Schema", () => {
+  test("Simple type Map to Field", () => {
+    // prepare Schema
+    const schema = { type: "string" } as ISchema;
+    registerComponent("string", Input);
+    jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
 
-  // when
-  const field: IField = parseSchema(schema) as IField;
+    // when
+    const field: IField = parseSchema(schema) as IField;
 
-  // then
-  expect(field.name).toEqual("name");
-  expect(field.Widget).not.toBe(Input);
-  expect(field.Widget.name).toEqual("InputWidget_name");
-  expect(field.schema).toEqual({ type: "string" });
-});
+    // then
+    expect(field.name).toEqual("name");
+    expect(field.Widget).not.toBe(Input);
+    expect(field.Widget.name).toEqual("InputWidget_name");
+    expect(field.schema).toEqual({ type: "string" });
+  });
 
-test("type format Map to Field", () => {
-  // prepare Schema
-  const schema = { type: "string", format: "datetime" } as ISchema;
-  registerComponent("string:datetime", InputDatetime);
-  jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
+  test("type format Map to Field", () => {
+    // prepare Schema
+    const schema = { type: "string", format: "datetime" } as ISchema;
+    registerComponent("string:datetime", InputDatetime);
+    jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
 
-  const mockHyperRender = jest.fn();
+    const mockHyperRender = jest.fn();
 
-  // when
-  const field: IField = parseSchema(schema) as IField;
-  (field.Widget as unknown as DefineComponent).render(
-    mockHyperRender,
-    "dummpyText" as any
-  );
+    // when
+    const field: IField = parseSchema(schema) as IField;
+    (field.Widget as unknown as DefineComponent).render(
+      mockHyperRender,
+      "dummpyText" as any
+    );
 
-  // then
-  expect(mockHyperRender.mock.calls[0][1].props.component[0]).toBe(
-    InputDatetime
-  );
-  expect(field.Widget).not.toBe(InputDatetime);
-  expect(field.Widget.name).toEqual("InputDatetimeWidget_name");
-  expect(field.schema).toEqual({ type: "string", format: "datetime" });
-});
+    // then
+    expect(mockHyperRender.mock.calls[0][1].props.component[0]).toBe(
+      InputDatetime
+    );
+    expect(field.Widget).not.toBe(InputDatetime);
+    expect(field.Widget.name).toEqual("InputDatetimeWidget_name");
+    expect(field.schema).toEqual({ type: "string", format: "datetime" });
+  });
 
-test("type enum Map to Field", () => {
-  // prepare Schema
-  const schema = { type: "string", enum: ["yes", "no"] } as ISchema;
-  registerComponent("string?enum", Select);
-  jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
+  test("type enum Map to Field", () => {
+    // prepare Schema
+    const schema = { type: "string", enum: ["yes", "no"] } as ISchema;
+    registerComponent("string?enum", Select);
+    jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
 
-  const mockHyperRender = jest.fn();
+    const mockHyperRender = jest.fn();
 
-  // when
-  const field: IField = parseSchema(schema) as IField;
-  (field.Widget as unknown as DefineComponent).render(
-    mockHyperRender,
-    "dummpyText" as any
-  );
+    // when
+    const field: IField = parseSchema(schema) as IField;
+    (field.Widget as unknown as DefineComponent).render(
+      mockHyperRender,
+      "dummpyText" as any
+    );
 
-  // then
-  expect(mockHyperRender.mock.calls[0][1].props.component[0]).toBe(Select);
-  expect(field.Widget).not.toBe(InputDatetime);
-  expect(field.Widget.name).toEqual("SingleSelect_name");
-  expect(field.schema).toEqual({ type: "string", enum: ["yes", "no"] });
-});
+    // then
+    expect(mockHyperRender.mock.calls[0][1].props.component[0]).toBe(Select);
+    expect(field.Widget).not.toBe(InputDatetime);
+    expect(field.Widget.name).toEqual("SingleSelect_name");
+    expect(field.schema).toEqual({ type: "string", enum: ["yes", "no"] });
+  });
 
-test("type void Map to Widget self", () => {
-  // prepare Schema
-  const schema = { type: "void" } as ISchema;
-  registerComponent("void", VoidWidget);
+  test("type void Map to Widget self", () => {
+    // prepare Schema
+    const schema = { type: "void" } as ISchema;
+    registerComponent("void", VoidWidget);
 
-  // when
-  const field: IField = parseSchema(schema) as IField;
+    // when
+    const field: IField = parseSchema(schema) as IField;
 
-  // then
-  expect(field.Widget).toBe(VoidWidget);
-  expect(field.name).toBeUndefined();
+    // then
+    expect(field.Widget).toBe(VoidWidget);
+    expect(field.name).toBeUndefined();
+  });
 });
