@@ -20,14 +20,14 @@
 - [X] 找个测试用的 swagger.json
 - [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
 - [ ] 解析 JSONSchema
-  - [ ] 对 简单 type[non array & object] 解析 -> Field + config | Widget + config
+  - [X] 对 简单 type[non array & object] 解析 -> Field + config | Widget + config
     - type 的解析规则 为 ${type}:${format}?${enum}
       - reference:   https://xrender.fun/form-render/api/inner-widget
     - 注：简单场景下，name 通过生成器随机生成不重名的 name
     - [X] 处理 type -> Field 的映射场景
     - [X] 处理 type + format 通用处理逻辑
     - [X] 处理 type + enum 场景
-    - [ ] 处理 type[void] 生成组件场景
+    - [X] 处理 type[void] 生成组件场景
   - [ ] 对 type[object] 打散 Field + config 项数据
   - [ ] 处理 type[array] 场景通用处理
     - [ ] 处理 type[array] + enum + 多选场景处理
