@@ -2,6 +2,7 @@ import { defineComponent } from "vue";
 import { IField, ISchema } from "./type";
 import { getWidget } from "./utils";
 import { Field } from "@formily/vue";
+import { nanoid } from 'nanoid';
 
 /**
  * @param schema: 需要解析的 Schema, 需要符合 JSON Schema 规范
@@ -9,7 +10,6 @@ import { Field } from "@formily/vue";
  **/
 export function parseSchema<T extends ISchema = ISchema>(
   schema: T,
-  name?: string
 ): IField[] | IField {
   if (schema?.type === "object" && typeof schema.properties === "object") {
     return Object.keys(schema.properties).map((propName) => {
@@ -24,21 +24,17 @@ export function parseSchema<T extends ISchema = ISchema>(
 
   const Widget = getWidget(schema);
 
-  if (name) {
-    return {
-      name,
-      schema,
-      Widget: defineComponent({
-        name: Widget.name + "_" + name,
-        render(h) {
-          return h(Field, { props: { component: [Widget] } });
-        },
-      }) as unknown,
-    } as IField;
-  }
+  const name  =  nanoid(10);
 
   return {
+    name,
     schema,
-    Widget,
+    Widget: defineComponent({
+      name: Widget.name + "_" + name,
+      render(h) {
+        return h(Field, { props: { component: [Widget] } });
+      },
+    }) as unknown,
   } as IField;
+
 }

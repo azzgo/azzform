@@ -1,5 +1,5 @@
 export interface IWidgetBaseSchema {
-  type: "string" | "object" | "array" | "number" | "boolean";
+  type: "string" | "object" | "array" | "number" | "boolean" | "void";
   title?: string;
   widget?: string;
   description?: string;

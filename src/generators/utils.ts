@@ -20,3 +20,4 @@ export function getWidget<Widget extends VueConstructor = VueConstructor>(
 
   return Widget;
 }
+

@@ -21,16 +21,18 @@
 - [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
 - [ ] 解析 JSONSchema
   - [ ] 对 简单 type[non array & object] 解析 -> Field + config | Widget + config
-    - [X] 处理 type -> Widget 的映射场景
-    - [ ] 处理 type, name -> Field 的映射场景
+    - 注：简单场景下，name 通过生成器随机生成不重名的 name
+    - [X] 处理 type -> Field 的映射场景
     - [ ] 处理 type + format 通用处理逻辑
     - [ ] 处理 type + enum 场景
+    - [ ] 处理 type[void] 生成组件场景
   - [ ] 对 type[object] 打散 Field + config 项数据
   - [ ] 处理 type[array] 场景通用处理
     - [ ] 处理 type[array] + enum + 多选场景处理
   - [ ] 处理 简单 type[custom] 场景的组件渲染逻辑
   - [ ] 处理 type[object|array custom] 非通用场景的处理逻辑
   - [ ] 处理 type[ignore] 场景的处理逻辑
+- [ ] Form 和 Field 
 - [ ] 尝试返回不同的表单组件
 - [ ] 尝试渲染
 
