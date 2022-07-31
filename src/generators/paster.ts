@@ -24,6 +24,13 @@ export function parseSchema<T extends ISchema = ISchema>(
 
   const Widget = getWidget(schema);
 
+  if (schema.type === "void") {
+    return {
+      schema,
+      Widget,
+    } as IField;
+  }
+
   const name = nanoid(10);
 
   return {

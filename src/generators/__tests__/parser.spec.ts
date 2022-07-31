@@ -4,6 +4,7 @@ import { store } from "../store";
 import Input from "../widgets/Input.vue";
 import InputDatetime from "../widgets/InputDatetime.vue";
 import Select from "../widgets/Select.vue";
+import VoidWidget from "../widgets/Void.vue";
 
 jest.mock("nanoid", () => ({
   nanoid: jest.fn(),
@@ -78,4 +79,17 @@ test("type enum Map to Field", () => {
   expect(field.Widget).not.toBe(InputDatetime);
   expect(field.Widget.name).toEqual("SingleSelect_name");
   expect(field.schema).toEqual({ type: "string", enum: ["yes", "no"] });
+});
+
+test("type void Map to Widget self", () => {
+  // prepare Schema
+  const schema = { type: "void" } as ISchema;
+  registerComponent("void", VoidWidget);
+
+  // when
+  const field: IField = parseSchema(schema) as IField;
+
+  // then
+  expect(field.Widget).toBe(VoidWidget);
+  expect(field.name).toBeUndefined();
 });
