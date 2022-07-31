@@ -3,6 +3,7 @@ import { registerComponent } from "../utils";
 import { store } from "../store";
 import Input from "../widgets/Input.vue";
 import InputDatetime from "../widgets/InputDatetime.vue";
+import Select from "../widgets/Select.vue";
 
 jest.mock("nanoid", () => ({
   nanoid: jest.fn(),
@@ -55,4 +56,26 @@ test("type format Map to Field", () => {
   expect(field.Widget).not.toBe(InputDatetime);
   expect(field.Widget.name).toEqual("InputDatetimeWidget_name");
   expect(field.schema).toEqual({ type: "string", format: "datetime" });
+});
+
+test("type enum Map to Field", () => {
+  // prepare Schema
+  const schema = { type: "string", enum: ["yes", "no"] } as ISchema;
+  registerComponent("string?enum", Select);
+  jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
+
+  const mockHyperRender = jest.fn();
+
+  // when
+  const field: IField = parseSchema(schema) as IField;
+  (field.Widget as unknown as DefineComponent).render(
+    mockHyperRender,
+    "dummpyText" as any
+  );
+
+  // then
+  expect(mockHyperRender.mock.calls[0][1].props.component[0]).toBe(Select);
+  expect(field.Widget).not.toBe(InputDatetime);
+  expect(field.Widget.name).toEqual("SingleSelect_name");
+  expect(field.schema).toEqual({ type: "string", enum: ["yes", "no"] });
 });

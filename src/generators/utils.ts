@@ -23,12 +23,11 @@ export function getWidget<Widget extends VueConstructor = VueConstructor>(
     if (schema.format) {
       Widget = store.widgets.get(`${schema.type}:${schema.format}`) as Widget;
     } else if (schema.enum) {
-      Widget = store.widgets.get(`${schema.type}?${schema.enum}`) as Widget;
+      Widget = store.widgets.get(`${schema.type}?enum`) as Widget;
     } else {
       Widget = store.widgets.get(schema.type) as Widget;
     }
   }
-
 
   if (!Widget) {
     console.info(`No found widget for [${schema.widget ?? schema.type}]`);

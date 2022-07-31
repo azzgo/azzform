@@ -25,7 +25,7 @@
       - reference:   https://xrender.fun/form-render/api/inner-widget
     - 注：简单场景下，name 通过生成器随机生成不重名的 name
     - [X] 处理 type -> Field 的映射场景
-    - [ ] 处理 type + format 通用处理逻辑
+    - [X] 处理 type + format 通用处理逻辑
     - [ ] 处理 type + enum 场景
     - [ ] 处理 type[void] 生成组件场景
   - [ ] 对 type[object] 打散 Field + config 项数据
