@@ -95,3 +95,49 @@ describe("One layer JSON Schema", () => {
     expect(field.name).toBeUndefined();
   });
 });
+
+describe("nest JSON", () => {
+  test("type['object'] properties should parsed", () => {
+    // prepare Schema
+    const schema = {
+      type: "object",
+      properties: {
+        reason: {
+          type: "string",
+          enum: ["sick", "vocation", "others"],
+        },
+        startTime: {
+          type: "string",
+          format: "datetime",
+        },
+        endTime: {
+          type: "string",
+          format: "datetime",
+        },
+      },
+    } as ISchema;
+    registerComponent("string?enum", Select);
+    registerComponent("string:datetime", InputDatetime);
+
+    const mockHyperRender = jest.fn();
+
+    // when
+    const fields: IField[] = parseSchema(schema) as IField[];
+
+    fields.forEach((field) => {
+      (field.Widget as unknown as DefineComponent).render(
+        mockHyperRender,
+        "dummpyText" as any
+      );
+    });
+
+    // then
+    expect(fields.length).toBeGreaterThan(0);
+    expect(fields.map((it) => it.name)).toEqual([
+      "reason",
+      "startTime",
+      "endTime",
+    ]);
+    expect(mockHyperRender).toBeCalledTimes(3);
+  });
+});

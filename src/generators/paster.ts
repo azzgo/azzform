@@ -14,10 +14,16 @@ export function parseSchema<T extends ISchema = ISchema>(
   if (schema?.type === "object" && typeof schema.properties === "object") {
     return Object.keys(schema.properties).map((propName) => {
       const curSchema: T = schema.properties[propName] as unknown as T;
+      const Widget = getWidget(curSchema);
       return {
         name: propName,
         schema: curSchema,
-        Widget: getWidget(curSchema),
+        Widget: defineComponent({
+          name: Widget.name + "_" + propName,
+          render(h) {
+            return h(Field, { props: { component: [Widget] } });
+          },
+        }),
       };
     });
   }
