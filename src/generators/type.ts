@@ -15,7 +15,7 @@ export interface IWidgetBaseSchema {
 export type ISchema<T extends IWidgetBaseSchema = IWidgetBaseSchema> = T;
 
 export interface IField<T extends ISchema = ISchema> {
-  name?: string;
+  name?: string | number | Array<string | number>;
   Widget: Vue.VueConstructor | DefineComponent;
   schema: T;
 }

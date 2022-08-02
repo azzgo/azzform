@@ -106,13 +106,18 @@ describe("nest JSON", () => {
           type: "string",
           enum: ["sick", "vocation", "others"],
         },
-        startTime: {
-          type: "string",
-          format: "datetime",
-        },
-        endTime: {
-          type: "string",
-          format: "datetime",
+        period: {
+          type: "object",
+          properties: {
+            startTime: {
+              type: "string",
+              format: "datetime",
+            },
+            endTime: {
+              type: "string",
+              format: "datetime",
+            },
+          },
         },
       },
     } as ISchema;
@@ -135,8 +140,8 @@ describe("nest JSON", () => {
     expect(fields.length).toBeGreaterThan(0);
     expect(fields.map((it) => it.name)).toEqual([
       "reason",
-      "startTime",
-      "endTime",
+      ["period", "startTime"],
+      ["period", "endTime"],
     ]);
     expect(mockHyperRender).toBeCalledTimes(3);
   });

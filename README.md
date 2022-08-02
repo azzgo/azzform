@@ -19,7 +19,7 @@
   - [X] swagger-js 解析 swagger.json
 - [X] 找个测试用的 swagger.json
 - [X] 实现 swaggerJson 中读取对应 JSON Schema 的能力
-- [ ] 解析 JSONSchema
+- [X] 解析 JSONSchema
   - [X] 对 简单 type[non array & object] 解析 -> Field + config | Widget + config
     - type 的解析规则 为 ${type}:${format}?${enum}
       - reference:   https://xrender.fun/form-render/api/inner-widget
@@ -28,7 +28,8 @@
     - [X] 处理 type + format 通用处理逻辑
     - [X] 处理 type + enum 场景
     - [X] 处理 type[void] 生成组件场景
-  - [ ] 对 type[object] 打散 Field + config 项数据
+  - [X] 对 type[object] 打散 Field + config 项数据
+    - [X] 嵌套的 type[object]
   - [ ] 处理 type[array] 场景通用处理
     - [ ] 处理 type[array] + enum + 多选场景处理
   - [ ] 处理 简单 type[custom] 场景的组件渲染逻辑
