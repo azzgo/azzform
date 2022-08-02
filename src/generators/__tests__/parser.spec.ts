@@ -145,4 +145,29 @@ describe("nest JSON", () => {
     ]);
     expect(mockHyperRender).toBeCalledTimes(3);
   });
+
+  test("type['array'] map to Field select", () => {
+    const schema = {
+      type: "array",
+      items: {
+        type: "string",
+      },
+    } as ISchema;
+
+    jest.spyOn(nanoid, "nanoid").mockReturnValue("name");
+    registerComponent("array", Select);
+
+    const mockHyperRender = jest.fn();
+
+    // when
+    const field: IField = parseSchema(schema) as IField;
+    (field.Widget as unknown as DefineComponent).render(
+      mockHyperRender,
+      "dummpyText" as any
+    );
+
+    expect(field.Widget.name).toEqual("SingleSelect_name");
+    expect(mockHyperRender.mock.calls[0][1].props.component[0]).toEqual(Select);
+  });
+
 });

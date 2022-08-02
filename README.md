@@ -30,11 +30,13 @@
     - [X] 处理 type[void] 生成组件场景
   - [X] 对 type[object] 打散 Field + config 项数据
     - [X] 嵌套的 type[object]
-  - [ ] 处理 type[array] 场景通用处理
-    - [ ] 处理 type[array] + enum + 多选场景处理
-  - [ ] 处理 简单 type[custom] 场景的组件渲染逻辑
-  - [ ] 处理 type[object|array custom] 非通用场景的处理逻辑
-  - [ ] 处理 type[ignore] 场景的处理逻辑
+  - [X] 处理 type[array] 场景通用处理
+    - [X] 处理 type[array] + items
+    - [-] 处理 type[array] + item[string?enum] 
+    - [-] 多选场景处理  -> 到时结合组件吧，多选不同组件 collectionFormat: 'multi'
+  - [-] 处理 简单 type[custom] 场景的组件渲染逻辑
+  - [-] 处理 type[object|array custom] 非通用场景的处理逻辑
+  - [X] 处理 type[void] 场景的处理逻辑
 - [ ] Form 和 Field 
 - [ ] 尝试返回不同的表单组件
 - [ ] 尝试渲染

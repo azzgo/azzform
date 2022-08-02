@@ -7,6 +7,7 @@ export interface IWidgetBaseSchema {
   enum?: Array<any>;
   format?: string;
   description?: string;
+  items?: IWidgetBaseSchema;
   default?: unknown;
   column?: number;
   properties?: Record<string, unknown>;
