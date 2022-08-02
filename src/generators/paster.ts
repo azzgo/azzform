@@ -19,7 +19,7 @@ export function parseSchema<T extends ISchema = ISchema>(
 
         // 需要判断 widget 字段，防止 type[object] 存在对应组件的情况
         if (
-          curSchema.type === "object" &&
+          curSchema?.type === "object" &&
           typeof curSchema.properties === "object" &&
           !curSchema.widget
         ) {
@@ -31,7 +31,7 @@ export function parseSchema<T extends ISchema = ISchema>(
           name: getNamePattern(propName, path),
           schema: curSchema,
           Widget: defineComponent({
-            name: Widget.name + "_" + propName,
+            name: Widget && Widget.name + "_" + propName,
             render(h) {
               return h(Field, { props: { component: [Widget] } });
             },

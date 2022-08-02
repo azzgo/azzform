@@ -1,3 +1,4 @@
+import { defineComponent } from "vue";
 import { VueConstructor } from "vue/types/umd";
 import { ISchema } from ".";
 import { UNKNOWN_WIDGET } from "./constants";
@@ -12,6 +13,16 @@ export function registerComponent<
 >(type: string, comp: Widget) {
   store.widgets.set(type, comp);
 }
+
+registerComponent(
+  UNKNOWN_WIDGET,
+  defineComponent({
+    name: UNKNOWN_WIDGET,
+    render(h) {
+      return h("div", null, UNKNOWN_WIDGET);
+    },
+  }) as unknown as VueConstructor
+);
 
 export function getWidget<Widget extends VueConstructor = VueConstructor>(
   schema: ISchema

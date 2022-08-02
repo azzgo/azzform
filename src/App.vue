@@ -14,8 +14,9 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { ISchema } from "./renderer";
+import { ISchema } from "./generators";
 import { cloneDeep, get } from "lodash";
+import { parseSchema } from "./generators";
 
 let editor: any;
 
@@ -47,6 +48,11 @@ export default Vue.extend({
     );
 
     editor.set(this.schema);
+  },
+  computed: {
+    fields() {
+      return parseSchema(this.schema);
+    },
   },
   watch: {
     schema(val: ISchema) {

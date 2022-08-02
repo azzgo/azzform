@@ -38,6 +38,7 @@
   - [-] 处理 type[object|array custom] 非通用场景的处理逻辑
   - [X] 处理 type[void] 场景的处理逻辑
 - [ ] Form 和 Field 
+  - [ ] required
 - [ ] 尝试返回不同的表单组件
 - [ ] 尝试渲染
 
