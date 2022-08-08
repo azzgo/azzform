@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent } from "@vue/composition-api";
 import { IField, ISchema } from "./type";
 import { getWidget } from "./utils";
 import { Field } from "@formily/vue";
@@ -27,13 +27,27 @@ export function parseSchema<T extends ISchema = ISchema>(
         }
 
         const Widget = getWidget(curSchema);
+        const name = getNamePattern(propName, path);
+
         return {
-          name: getNamePattern(propName, path),
+          name,
           schema: curSchema,
           Widget: defineComponent({
             name: Widget && Widget.name + "_" + propName,
+            props: {
+              label: {
+                type: String,
+                default: "",
+              },
+            },
             render(h) {
-              return h(Field, { props: { component: [Widget] } });
+              return h(Field, {
+                props: {
+                  name,
+                  label: this.label,
+                  component: [Widget, { schema: curSchema }],
+                },
+              });
             },
           }),
         };
@@ -57,8 +71,16 @@ export function parseSchema<T extends ISchema = ISchema>(
     schema,
     Widget: defineComponent({
       name: Widget.name + "_" + name,
+      props: {
+        label: {
+          type: String,
+          default: "",
+        },
+      },
       render(h) {
-        return h(Field, { props: { component: [Widget] } });
+        return h(Field, {
+          props: { name, label: this.label, component: [Widget, { schema }] },
+        });
       },
     }) as unknown,
   } as IField;

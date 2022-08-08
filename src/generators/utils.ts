@@ -1,4 +1,4 @@
-import { defineComponent } from "vue";
+import { defineComponent } from "@vue/composition-api";
 import { VueConstructor } from "vue/types/umd";
 import { ISchema } from ".";
 import { UNKNOWN_WIDGET } from "./constants";

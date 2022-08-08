@@ -1,19 +1,12 @@
 <template>
-  <div>
-    <label>{{ title }}</label>
-    <input type="datetime" />
-  </div>
+  <input type="datetime" />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "InputDatetimeWidget",
-  props: {
-    title: {
-      type: String,
-    },
-  },
+  props: {},
 });
 </script>

@@ -1,19 +1,12 @@
 <template>
-  <div>
-    <label>{{ title }}</label>
-    <textarea :rows="5"></textarea>
-  </div>
+  <textarea :rows="5"></textarea>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "TextWidget",
-  props: {
-    title: {
-      type: String,
-    },
-  },
+  props: {},
 });
 </script>

@@ -1,5 +1,4 @@
 import Vue from "vue";
-import App from "./App.vue";
 
 import VueCompositionAPI from "@vue/composition-api";
 
@@ -9,6 +8,7 @@ Vue.use(VueCompositionAPI);
 
 import SwaggerClient from "swagger-client";
 import originSwaggerJSON from "./swagger.json";
+import App from "./App.vue";
 
 SwaggerClient.resolve({
   spec: originSwaggerJSON,

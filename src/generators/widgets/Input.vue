@@ -1,19 +1,12 @@
 <template>
-  <div>
-    <label>{{ title }}</label>
-    <input />
-  </div>
+  <input />
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent } from "@vue/composition-api";
 
 export default defineComponent({
   name: "InputWidget",
-  props: {
-    title: {
-      type: String,
-    },
-  },
+  props: {},
 });
 </script>
