@@ -1005,77 +1005,6 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@formily/core@2.1.12", "@formily/core@^2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/core/-/core-2.1.12.tgz#655a5b213c74e9751deebe14e7f76f1caa8580d4"
-  integrity sha512-wExwGgrcwnqqxl6IBnf1EpDkYWxiiP6gt/03dNl0Auf80uUqsNnImH5Ji9ogZZ8ZVDOeOgxapb+pqajslv4rmw==
-  dependencies:
-    "@formily/reactive" "2.1.12"
-    "@formily/shared" "2.1.12"
-    "@formily/validator" "2.1.12"
-
-"@formily/json-schema@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/json-schema/-/json-schema-2.1.12.tgz#35f3bdfdea706bb032bb62e223a32eacd45592d2"
-  integrity sha512-3bPbTzgjozEDFe3YFG5s0XBdQZqty6GFLLZ6yWKda/+Gf/2eRxGB9ODnz5IFWjBYF7oyYJgB/INS1kRwrL6Chw==
-  dependencies:
-    "@formily/core" "2.1.12"
-    "@formily/reactive" "2.1.12"
-    "@formily/shared" "2.1.12"
-
-"@formily/path@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/path/-/path-2.1.12.tgz#0f0bad233798933758d84e4d1da222c1f6751b6a"
-  integrity sha512-C5CTOcPWwO1N+SEicuoC93B5coVSwnrTlHI1OLN7clc73phJzuhl4u5jPxw/zgcKx3l5L+304Qrs14np7Rq1vQ==
-
-"@formily/reactive-vue@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/reactive-vue/-/reactive-vue-2.1.12.tgz#56c29702aa484d392d2f1f2cd234433abfb32eda"
-  integrity sha512-oUHWvscGeOzUyDsJzijzD689PhF4CUpV6a5a92/CLjDLoiX66HNAFQopps7MEKwPWBSKjxa50+AFx2q/pzy5Dg==
-  dependencies:
-    "@formily/reactive" "2.1.12"
-    vue-demi "^0.9.0"
-
-"@formily/reactive@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/reactive/-/reactive-2.1.12.tgz#b82e0b5c92b70bfc68e9956d7411402b6c45382f"
-  integrity sha512-GXMQ2dldS646J54LZ77sJOHW7or40c5Vt95wWh6aXqh1wp+LRa3u1bGwPdahYCji15gwwwpKt29p33WJHKYdKg==
-
-"@formily/shared@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/shared/-/shared-2.1.12.tgz#beecc8edfa1b4958ef7292c1b05a67b1f8ce73ca"
-  integrity sha512-xRyVKQ+Y0jwG0+tHZ09I8abghT6yHW7Bbva3SIcekJqcDXiL9z6919bkgCr3D6gymHo1g4dllb0VxaPqzI+XIA==
-  dependencies:
-    "@formily/path" "2.1.12"
-    camel-case "^4.1.1"
-    lower-case "^2.0.1"
-    no-case "^3.0.4"
-    param-case "^3.0.4"
-    pascal-case "^3.1.1"
-    upper-case "^2.0.1"
-
-"@formily/validator@2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/validator/-/validator-2.1.12.tgz#8c6c139b3045259ea03cb767a6eac8a4cd36866d"
-  integrity sha512-ViMmMxQRpEupI+rjeXS3mmecuTlD84F1qMjYGUXw2VP4MZKNuzw1yoRqJjRbqw+Gelfx/+iRLQgFcKmfrxTt7A==
-  dependencies:
-    "@formily/shared" "2.1.12"
-
-"@formily/vue@^2.1.12":
-  version "2.1.12"
-  resolved "https://registry.npmmirror.com/@formily/vue/-/vue-2.1.12.tgz#b37351a4fe2ad4ff767bf3011f4c2184f297242d"
-  integrity sha512-usguxVW1aB7qXIc0ruffRiLurISJi43axSQLFtrrh1III5/kfBTV95ctVplN4Ig7zzCpKg9oho0A8cL0nPq8vw==
-  dependencies:
-    "@formily/core" "2.1.12"
-    "@formily/json-schema" "2.1.12"
-    "@formily/reactive" "2.1.12"
-    "@formily/reactive-vue" "2.1.12"
-    "@formily/shared" "2.1.12"
-    "@formily/validator" "2.1.12"
-    fs-extra "^10.0.0"
-    vue-demi "^0.9.0"
-    vue-frag "^1.1.4"
-
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.npmmirror.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -2794,7 +2723,7 @@ callsites@^3.0.0:
   resolved "https://registry.npmmirror.com/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==
 
-camel-case@^4.1.1, camel-case@^4.1.2:
+camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmmirror.com/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha512-gxGWBrTT1JuMx6R+o5PTXMmUnhnVzLQ9SNutD4YqKtI6ap897t3tKECYla6gCWEkplXnlNybEkZg9GEGxKFCgw==
@@ -4197,15 +4126,6 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.npmmirror.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
   integrity sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==
-
-fs-extra@^10.0.0:
-  version "10.1.0"
-  resolved "https://registry.npmmirror.com/fs-extra/-/fs-extra-10.1.0.tgz#02873cfbc4084dde127eaa5f9905eef2325d1abf"
-  integrity sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==
-  dependencies:
-    graceful-fs "^4.2.0"
-    jsonfile "^6.0.1"
-    universalify "^2.0.0"
 
 fs-extra@^9.0.0, fs-extra@^9.1.0:
   version "9.1.0"
@@ -5615,7 +5535,7 @@ log-update@^2.3.0:
     cli-cursor "^2.0.0"
     wrap-ansi "^3.0.1"
 
-lower-case@^2.0.1, lower-case@^2.0.2:
+lower-case@^2.0.2:
   version "2.0.2"
   resolved "https://registry.npmmirror.com/lower-case/-/lower-case-2.0.2.tgz#6fa237c63dbdc4a82ca0fd882e4722dc5e634e28"
   integrity sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==
@@ -6143,7 +6063,7 @@ parseurl@~1.3.2, parseurl@~1.3.3:
   resolved "https://registry.npmmirror.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
   integrity sha512-CiyeOxFT/JZyN5m0z9PfXw4SCBJ6Sygz1Dpl0wqjlhDEGGBP1GnsUVEL0p63hoG1fcj3fHynXi9NYO4nWOL+qQ==
 
-pascal-case@^3.1.1, pascal-case@^3.1.2:
+pascal-case@^3.1.2:
   version "3.1.2"
   resolved "https://registry.npmmirror.com/pascal-case/-/pascal-case-3.1.2.tgz#b48e0ef2b98e205e7c1dae747d0b1508237660eb"
   integrity sha512-uWlGT3YSnK9x3BQJaOdcZwrnV6hPpd8jFH1/ucpiLRPh/2zCVJKS19E4GvYHvaCcACn3foXZ0cLB9Wrx1KGe5g==
@@ -7720,13 +7640,6 @@ update-browserslist-db@^1.0.4:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
-upper-case@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.npmmirror.com/upper-case/-/upper-case-2.0.2.tgz#d89810823faab1df1549b7d97a76f8662bae6f7a"
-  integrity sha512-KgdgDGJt2TpuwBUIjgG6lzw2GWFRCW9Qkfkiv0DxqHHLYJHmtmdUIKcZd8rHgFSjopVTlw6ggzCm1b8MFQwikg==
-  dependencies:
-    tslib "^2.0.3"
-
 uri-js@^4.2.2:
   version "4.4.1"
   resolved "https://registry.npmmirror.com/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
@@ -7789,11 +7702,6 @@ vary@~1.1.2:
   resolved "https://registry.npmmirror.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
-vue-demi@^0.9.0:
-  version "0.9.1"
-  resolved "https://registry.npmmirror.com/vue-demi/-/vue-demi-0.9.1.tgz#25d6e1ebd4d4010757ff3571e2bf6a1d7bf3de82"
-  integrity sha512-7s1lufRD2l369eFWPjgLvhqCRk0XzGWJsQc7K4q+0mZtixyGIvsK1Cg88P4NcaRIEiBuuN4q1NN4SZKFKwQswA==
-
 vue-eslint-parser@^8.0.0, vue-eslint-parser@^8.0.1:
   version "8.3.0"
   resolved "https://registry.npmmirror.com/vue-eslint-parser/-/vue-eslint-parser-8.3.0.tgz#5d31129a1b3dd89c0069ca0a1c88f970c360bd0d"
@@ -7806,11 +7714,6 @@ vue-eslint-parser@^8.0.0, vue-eslint-parser@^8.0.1:
     esquery "^1.4.0"
     lodash "^4.17.21"
     semver "^7.3.5"
-
-vue-frag@^1.1.4:
-  version "1.4.0"
-  resolved "https://registry.npmmirror.com/vue-frag/-/vue-frag-1.4.0.tgz#eede3df860163f6c2d9b07c7d9492b2cf53de24b"
-  integrity sha512-S3LfATqRwSMR6O8mf92wKF3y2E/Gs/3MFJXW4CozMOLUeOopNUlkcYuhVLagw7fkNmn/Pyb1zfRY5UCwU+X6Gw==
 
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"

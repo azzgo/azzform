@@ -3,8 +3,7 @@ import Vue from "vue";
 import { ISchema } from "./generators";
 import { cloneDeep, get } from "lodash";
 import { parseSchema } from "./generators";
-import { Field, FormProvider } from "@formily/vue";
-import { createForm } from "@formily/core";
+import Form from "./form/form.vue";
 
 let editor: any;
 
@@ -21,8 +20,8 @@ export default Vue.extend({
 
     return {
       path: jsonPath,
-      form: createForm({ validateFirst: true }),
       schema: get(cloneDeep(this.swaggerJSON), jsonPath) as ISchema,
+      form: {},
     };
   },
   mounted() {
@@ -62,12 +61,15 @@ export default Vue.extend({
           <div class="flex">
             <input class="flex-1" name="path" v-model={this.path} />
             <button onClick={this.updateScheme}>更新 PATH</button>
-            <FormProvider form={this.form}>
-              <Field name="hello" />
-            </FormProvider>
           </div>
         </div>
-        <div class="flex-1" id="json-viewer"></div>
+        <div class="flex-1" id="json-viewer">
+          <Form v-model={this.form}>
+            {this.fields.map((field: any) => {
+              return <field.Widget key={field.name.toString()} />;
+            })}
+          </Form>
+        </div>
       </div>
     );
   },

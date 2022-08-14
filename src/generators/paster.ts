@@ -1,8 +1,8 @@
 import { defineComponent } from "@vue/composition-api";
 import { IField, ISchema } from "./type";
 import { getWidget } from "./utils";
-import { Field } from "@formily/vue";
 import { nanoid } from "nanoid";
+import Field from "../form/field.vue";
 
 /**
  * @param schema: 需要解析的 Schema, 需要符合 JSON Schema 规范
@@ -79,7 +79,17 @@ export function parseSchema<T extends ISchema = ISchema>(
       },
       render(h) {
         return h(Field, {
-          props: { name, label: this.label, component: [Widget, { schema }] },
+          props: { name, label: this.label },
+          scopedSlots: {
+            default: function (props: any) {
+              return [
+                h(Widget, {
+                  props: { value: props.value },
+                  on: { change: props.onChange },
+                }),
+              ];
+            },
+          },
         });
       },
     }) as unknown,
