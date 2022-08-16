@@ -62,14 +62,15 @@ export default Vue.extend({
             <input class="flex-1" name="path" v-model={this.path} />
             <button onClick={this.updateScheme}>更新 PATH</button>
           </div>
+          <div>
+            <Form v-model={this.form}>
+              {this.fields.map((field: any) => {
+                return <field.Widget key={field.name.toString()} />;
+              })}
+            </Form>
+          </div>
         </div>
-        <div class="flex-1" id="json-viewer">
-          <Form v-model={this.form}>
-            {this.fields.map((field: any) => {
-              return <field.Widget key={field.name.toString()} />;
-            })}
-          </Form>
-        </div>
+        <div class="flex-1" id="json-viewer"></div>
       </div>
     );
   },

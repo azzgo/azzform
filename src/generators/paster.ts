@@ -45,7 +45,16 @@ export function parseSchema<T extends ISchema = ISchema>(
                 props: {
                   name,
                   label: this.label,
-                  component: [Widget, { schema: curSchema }],
+                },
+                scopedSlots: {
+                  default: function (props: any) {
+                    return [
+                      h(Widget, {
+                        props: { value: props.value },
+                        on: { change: props.onChange },
+                      }),
+                    ];
+                  },
                 },
               });
             },
