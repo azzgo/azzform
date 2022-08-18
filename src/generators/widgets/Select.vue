@@ -1,5 +1,5 @@
 <template>
-  <select :value="value" @change="handleChange">
+  <select :value="value" @change="handleChange" class="u-full-width">
     <option v-for="op in options" :key="op" :value="op">{{ op }}</option>
     <option></option>
   </select>

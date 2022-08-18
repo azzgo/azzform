@@ -269,6 +269,7 @@
       ],
       "properties": {
         "ids": {
+          "title": "审批单号",
           "type": "array",
           "description": "请求的申请单列表",
           "items": {
@@ -277,6 +278,7 @@
         },
         "operationType": {
           "type": "string",
+          "title": "审批动作",
           "description": "审批动作",
           "enum": [
             "APPROVE",
@@ -284,6 +286,7 @@
           ]
         },
         "remark": {
+          "title": "备注",
           "type": "string"
         }
       },

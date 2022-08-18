@@ -31,6 +31,7 @@ export default defineComponent({
   },
   methods: {
     updateValue(namePath: any, val: any) {
+      console.log(namePath, val);
       setValue(this.value, namePath, val);
     },
     getValue(namePath: string | string[]) {

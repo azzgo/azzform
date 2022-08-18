@@ -38,6 +38,13 @@ export default Vue.extend({
     fields() {
       return parseSchema(this.schema);
     },
+    formValueFormat() {
+      try {
+        return JSON.stringify(this.form, null, 2);
+      } catch (e) {
+        return "error";
+      }
+    },
   },
   watch: {
     schema(val: ISchema) {
@@ -68,6 +75,10 @@ export default Vue.extend({
                 return <field.Widget key={field.name.toString()} />;
               })}
             </Form>
+            <div>
+              <h4>form value</h4>
+              <pre>{this.formValueFormat}</pre>
+            </div>
           </div>
         </div>
         <div class="flex-1" id="json-viewer"></div>

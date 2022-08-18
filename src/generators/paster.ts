@@ -44,14 +44,16 @@ export function parseSchema<T extends ISchema = ISchema>(
               return h(Field, {
                 props: {
                   name,
-                  label: this.label,
+                  label: this.label || curSchema.title,
                 },
                 scopedSlots: {
                   default: function (props: any) {
                     return [
                       h(Widget, {
-                        props: { value: props.value },
-                        on: { change: props.onChange },
+                        props: { value: props.value, schema: curSchema },
+                        on: {
+                          change: (val: any) => props.updateValue(name, val),
+                        },
                       }),
                     ];
                   },
@@ -88,13 +90,13 @@ export function parseSchema<T extends ISchema = ISchema>(
       },
       render(h) {
         return h(Field, {
-          props: { name, label: this.label },
+          props: { name, label: this.label || schema.title },
           scopedSlots: {
             default: function (props: any) {
               return [
                 h(Widget, {
-                  props: { value: props.value },
-                  on: { change: props.onChange },
+                  props: { value: props.value, schema },
+                  on: { change: (val: any) => props.updateValue(name, val) },
                 }),
               ];
             },
